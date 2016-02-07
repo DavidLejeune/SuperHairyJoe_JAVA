@@ -7,6 +7,8 @@ package com.dale.superhairyjoe;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -28,22 +30,60 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     public boolean running = false;
     
-    public synchronized void start()
+    private synchronized void start()
     {
         System.out.println("Game started");
+        if(running) 
+        {
+            return;
+        }
+        else
+        {
+            running = true;
+            thread = new Thread(this, "Thread");
+            thread.start();
+        }
+        
     }
     
-    public synchronized void stop()
+    private synchronized void stop()
     {
-        
+ 
+        if(!running) 
+        {
+            System.out.println("Game already running");
+            return;
+        }
+        else
+        {
+            running = false;
+            try { 
+                thread.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }    
     }
     
     
     public void run() 
     {
-   
+        while(running)
+        {
+            render();
+            tick();
+        }
     }
     
+    public void render()
+    {
+        
+    }
+    
+    public void tick()
+    {
+        
+    }
     
     
     public Game()
