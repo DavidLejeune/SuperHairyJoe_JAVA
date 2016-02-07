@@ -25,7 +25,7 @@ public class Player extends Entity{
     {
         
         
-           g.setColor(Color.GRAY);
+        g.setColor(Color.GRAY);
         g.drawRect(x , y  , width ,  height);
         
         g.setColor(Color.RED);
