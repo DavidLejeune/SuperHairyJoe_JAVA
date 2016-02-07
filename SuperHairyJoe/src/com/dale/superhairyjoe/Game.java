@@ -6,7 +6,10 @@
 package com.dale.superhairyjoe;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -26,6 +29,8 @@ public class Game extends Canvas implements Runnable
     public static final int HEIGHT = WIDTH / 14 * 10;
     public static final int SCALE = 4;
     public static final String TITLE = "Super Hairy Joe";
+    
+    private Color randomColor;
     
     private Thread thread;
     public boolean running = false;
@@ -57,11 +62,15 @@ public class Game extends Canvas implements Runnable
         else
         {
             running = false;
-            try { 
+            try 
+            { 
                 thread.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+            
         }    
     }
     
@@ -103,8 +112,27 @@ public class Game extends Canvas implements Runnable
         }
     }
     
+    
     public void render()
     {
+        BufferStrategy bs = getBufferStrategy();
+        if (bs==null)
+        {
+            createBufferStrategy(3);
+            return;
+        }
+        
+
+        Graphics g = bs.getDrawGraphics();
+        g.setColor(new Color(56,111,222));
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.RED);
+        g.fillRect(200, 200, getWidth() - 400 , getHeight() - 400);
+          
+        
+        
+        g.dispose();
+        bs.show();
         
     }
     
@@ -138,7 +166,10 @@ public class Game extends Canvas implements Runnable
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     
+        
+        
         game.start();
+        
         
         
     }
