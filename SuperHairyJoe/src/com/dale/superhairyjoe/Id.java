@@ -10,5 +10,5 @@ package com.dale.superhairyjoe;
  * @author David
  */
 public enum Id {
-    
+    player;
 }

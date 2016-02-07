@@ -5,6 +5,7 @@
  */
 package com.dale.superhairyjoe;
 
+import com.dale.superhairyjoe.entity.Player;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,6 +35,7 @@ public class Game extends Canvas implements Runnable
     
     private Thread thread;
     public boolean running = false;
+    public static Handler handler;
     
     private synchronized void start()
     {
@@ -74,9 +76,18 @@ public class Game extends Canvas implements Runnable
         }    
     }
     
+    public void init()
+    {
+        handler = new Handler();
+        
+        handler.addEntity(new Player(200,200,64,64,true,Id.player,handler));
+    }
+    
     
     public void run() 
     {
+        init();
+        
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
         double delta = 0;
@@ -124,12 +135,13 @@ public class Game extends Canvas implements Runnable
         
 
         Graphics g = bs.getDrawGraphics();
-        g.setColor(new Color(56,111,222));
+        g.setColor(Color.BLACK);
+        //g.setColor(new Color(56,111,222));
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.setColor(Color.RED);
-        g.fillRect(200, 200, getWidth() - 400 , getHeight() - 400);
+        //g.setColor(Color.RED);
+        //g.fillRect(200, 200, getWidth() - 400 , getHeight() - 400);
           
-        
+        handler.render(g);
         
         g.dispose();
         bs.show();

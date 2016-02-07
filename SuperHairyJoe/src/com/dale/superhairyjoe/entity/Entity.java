@@ -13,7 +13,7 @@ import java.awt.Graphics;
  *
  * @author David
  */
-public class Entity {
+public abstract class Entity {
     
     public int x, y;
     public int width, height;
@@ -43,16 +43,8 @@ public class Entity {
         handler.removeEntity(this);
     }
     
-    public void render(Graphics g)
-    {
-        
-    }
-    
-    public void tick()
-    {
-        x += velX;
-        y += velY;
-    }
+    public abstract void render(Graphics g);    
+    public abstract void tick();
     
     public int getX()
     {
