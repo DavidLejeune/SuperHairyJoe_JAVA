@@ -5,6 +5,8 @@
  */
 package com.dale.superhairjoe.tile;
 
+import com.dale.superhairyjoe.Handler;
+import com.dale.superhairyjoe.Id;
 import java.awt.Graphics;
 
 /**
@@ -13,21 +15,32 @@ import java.awt.Graphics;
  */
 public class Tile {
     
-        public int x, y;
+    public int x, y;
     public int width, height;
     
     public boolean solid;
     
+    public Id id;
+    
     public int velX, velY;
     
-    public Tile(int x, int y, int width, int height, boolean solid)
+    public Handler handler;
+    
+    public Tile(int x, int y, int width, int height, boolean solid,Id id , Handler handler)
     {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.solid = solid;
+        this.id = id;    
+        this.handler = handler;     
         
+    }
+    
+    public void die()
+    {
+        handler.removeTile(this);
     }
     
     public void render(Graphics g)
@@ -83,6 +96,12 @@ public class Tile {
     {
         this.solid = solid;
     }
+      
+    public Id getId()
+    {
+        return id;
+    }  
+    
     
     
 }

@@ -5,6 +5,8 @@
  */
 package com.dale.superhairyjoe.entity;
 
+import com.dale.superhairyjoe.Handler;
+import com.dale.superhairyjoe.Id;
 import java.awt.Graphics;
 
 /**
@@ -20,14 +22,25 @@ public class Entity {
     
     public int velX, velY;
     
-    public Entity(int x, int y, int width, int height, boolean solid)
+    public Id id;
+    
+    public Handler handler;
+    
+    public Entity(int x, int y, int width, int height, boolean solid ,Id id , Handler handler)
     {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.solid = solid;
+        this.id = id;
+        this.handler = handler;
         
+    }
+    
+    public void die()
+    {
+        handler.removeEntity(this);
     }
     
     public void render(Graphics g)
@@ -83,5 +96,12 @@ public class Entity {
     {
         this.solid = solid;
     }
+    
+    public Id getId()
+    {
+        return id;
+    }
+    
+    
     
 }
