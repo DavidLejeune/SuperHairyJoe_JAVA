@@ -17,13 +17,33 @@ import javax.swing.JFrame;
  */
 
 
-public class Game extends Canvas
+public class Game extends Canvas implements Runnable 
 {
     
     public static final int WIDTH = 270;
     public static final int HEIGHT = WIDTH / 14 * 10;
     public static final int SCALE = 4;
     public static final String TITLE = "Super Hairy Joe";
+    
+    private Thread thread;
+    public boolean running = false;
+    
+    public synchronized void start()
+    {
+        System.out.println("Game started");
+    }
+    
+    public synchronized void stop()
+    {
+        
+    }
+    
+    
+    public void run() 
+    {
+   
+    }
+    
     
     
     public Game()
@@ -49,8 +69,12 @@ public class Game extends Canvas
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    
+        game.start();
+        
         
     }
+
     
     
 }
