@@ -5,6 +5,7 @@
  */
 package com.dale.superhairyjoe.entity;
 
+import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
 import java.awt.Color;
@@ -36,7 +37,7 @@ public class Player extends Entity{
         //g.setColor(Color.YELLOW);
         //g.fillRect(x , y  , width ,  height);
     
-        //created with Hombrew excel tool 
+        //created with Homebrew excel tool 
         g.setColor(Color.YELLOW);
 g.fillRect(x + 20, y + 0, 2, 2);
 g.setColor(Color.YELLOW);
@@ -2326,6 +2327,12 @@ g.fillRect(x + 46, y + 126, 2, 2);
     {
         x+=velX;
         y+=velY;
+        
+        if (x<=0) x=0;
+        if (y<=0) y=0;
+        if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
+        if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
+        
     }
     
     
