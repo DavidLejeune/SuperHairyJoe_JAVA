@@ -75,8 +75,32 @@ public class KeyInput implements KeyListener{
     
     
     @Override
-    public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void keyTyped(KeyEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        int key = e.getKeyCode();
+        for(Entity en: Game.handler.entity)
+        {
+            switch(key)
+           {
+               case KeyEvent.VK_LEFT:
+                   en.setvelX(-5);
+                   break;
+               case KeyEvent.VK_RIGHT:
+                   en.setvelX(5);
+                   break;
+               case KeyEvent.VK_UP:
+                   en.setvelY(-5);
+                   break;
+               case KeyEvent.VK_DOWN:
+                   en.setvelY(5);
+                   break;
+
+           }           
+        }
+        
+        
+        
     }
     
 }

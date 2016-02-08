@@ -8,6 +8,7 @@ package com.dale.superhairjoe.tile;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  *
@@ -94,6 +95,9 @@ public abstract class Tile {
         return id;
     }  
     
-    
+        public Rectangle getBounds()
+    {
+        return new Rectangle(getX(),getY(),width, height);
+    }
     
 }

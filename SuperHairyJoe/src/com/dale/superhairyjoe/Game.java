@@ -5,6 +5,7 @@
  */
 package com.dale.superhairyjoe;
 
+import com.dale.superhairjoe.tile.Wall;
 import com.dale.superhairyjoe.entity.Player;
 import com.dale.superhairyjoe.input.KeyInput;
 import java.awt.Canvas;
@@ -83,7 +84,8 @@ public class Game extends Canvas implements Runnable
         
         addKeyListener(new KeyInput());
         
-        handler.addEntity(new Player(200,200,64,128,true,Id.player,handler));
+        handler.addEntity(new Player(200,400,32,64,true,Id.player,handler));
+        handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
     }
     
     

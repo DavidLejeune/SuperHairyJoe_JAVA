@@ -5,6 +5,7 @@
  */
 package com.dale.superhairyjoe.entity;
 
+import com.dale.superhairjoe.tile.Tile;
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
@@ -2273,6 +2274,35 @@ public class Player extends Entity{
         if (y<=0) y=0;
         if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
         if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
+        
+        for(Tile t:handler.tile)
+        {
+            if(!t.solid) break;
+            if(t.getId()==Id.wall)
+            {
+                if(getBoundsTop().intersects(t.getBounds()))
+                {
+                    setvelY(0);
+                    y = t.getY() + t.height;
+                } 
+                if(getBoundsBottom().intersects(t.getBounds()))
+                {
+                    setvelY(0);
+                    y = t.getY() - t.height;
+                }
+                if(getBoundsLeft().intersects(t.getBounds()))
+                { 
+                    setvelX(0);
+                    x = t.getX() + t.width;
+                }
+                if(getBoundsRight().intersects(t.getBounds()))
+                {
+                    setvelX(0);
+                    x = t.getX() - t.width + 32 ;
+                }
+            }
+        }
+        
         
     }
     
