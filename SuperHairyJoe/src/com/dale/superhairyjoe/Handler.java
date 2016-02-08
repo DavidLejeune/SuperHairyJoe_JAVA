@@ -6,6 +6,7 @@
 package com.dale.superhairyjoe;
 
 import com.dale.superhairjoe.tile.Tile;
+import com.dale.superhairjoe.tile.Wall;
 import com.dale.superhairyjoe.entity.Entity;
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -19,6 +20,10 @@ public class Handler {
     public LinkedList<Entity> entity = new LinkedList<Entity>();
     public LinkedList<Tile> tile = new LinkedList<Tile>();
     
+    public Handler()
+    {
+        createLevel();
+    }
     
     public void render(Graphics g)
     {
@@ -68,4 +73,13 @@ public class Handler {
         tile.remove(ti);
         
     }
+    
+    public void createLevel()
+    {
+        for(int i =0;i<Game.WIDTH * Game.SCALE /64 + 1;i++)
+        {
+            addTile(new Wall(i*64,Game.HEIGHT * Game.SCALE -64,64,64,true,Id.wall,this));
+        }
+    }
+    
 }

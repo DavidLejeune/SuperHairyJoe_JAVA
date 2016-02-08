@@ -19,6 +19,7 @@ import java.awt.Graphics;
 public class Player extends Entity{
 
 
+    private int scale = 1;
     
     
     
@@ -32,7 +33,67 @@ public class Player extends Entity{
         
     }
     
-    public void render(Graphics g)
+   
+    public void tick()
+    {
+        x+=velX;
+        y+=velY;
+        
+        if (x<=0) x=0;
+        if (y<=0) y=0;
+        if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
+        if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
+        
+        for(Tile t:handler.tile)
+        {
+            if(!t.solid) break;
+            if(t.getId()==Id.wall)
+            {
+                if(getBoundsTop().intersects(t.getBounds()))
+                {
+                    setvelY(0);
+                    //y = t.getY() + t.height;
+                } 
+                if(getBoundsBottom().intersects(t.getBounds()))
+                {
+                    setvelY(0);
+                    //y = t.getY() - t.height;
+                    if(falling) falling=false;
+                }
+                if(getBoundsLeft().intersects(t.getBounds()))
+                { 
+                    setvelX(0);
+                    x = t.getX() + t.width;
+                }
+                if(getBoundsRight().intersects(t.getBounds()))
+                {
+                    setvelX(0);
+                    x = t.getX() - t.width + 32 ;
+                }
+            }
+        }
+        if (jumping)
+           
+        {
+            gravity-=0.1;
+            setvelY((int) -gravity);
+            if(gravity<=0.0)
+            {
+                jumping = false;
+                falling=true;
+            }
+        }
+        if (falling)
+        {
+            gravity+=0.1;
+            setvelY((int) gravity);
+            
+        }
+        
+        
+    }
+    
+     public void render(Graphics g)
     {
         
         //g.setColor(Color.YELLOW);
@@ -2262,49 +2323,8 @@ public class Player extends Entity{
         g.fillRect(x + 23, y + 63, 1, 1);
 
         
-        
     }
     
-    public void tick()
-    {
-        x+=velX;
-        y+=velY;
-        
-        if (x<=0) x=0;
-        if (y<=0) y=0;
-        if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
-        if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
-        
-        for(Tile t:handler.tile)
-        {
-            if(!t.solid) break;
-            if(t.getId()==Id.wall)
-            {
-                if(getBoundsTop().intersects(t.getBounds()))
-                {
-                    setvelY(0);
-                    y = t.getY() + t.height;
-                } 
-                if(getBoundsBottom().intersects(t.getBounds()))
-                {
-                    setvelY(0);
-                    y = t.getY() - t.height;
-                }
-                if(getBoundsLeft().intersects(t.getBounds()))
-                { 
-                    setvelX(0);
-                    x = t.getX() + t.width;
-                }
-                if(getBoundsRight().intersects(t.getBounds()))
-                {
-                    setvelX(0);
-                    x = t.getX() - t.width + 32 ;
-                }
-            }
-        }
-        
-        
-    }
     
     
 }

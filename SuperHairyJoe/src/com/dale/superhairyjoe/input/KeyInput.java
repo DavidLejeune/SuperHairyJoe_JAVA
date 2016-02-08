@@ -31,7 +31,12 @@ public class KeyInput implements KeyListener{
                    en.setvelX(5);
                    break;
                case KeyEvent.VK_UP:
-                   en.setvelY(-5);
+                   //en.setvelY(-5);
+                   if(!en.jumping) 
+                   {
+                       en.jumping = true;
+                       en.gravity = 10.0;
+                   }
                    break;
                case KeyEvent.VK_DOWN:
                    en.setvelY(5);

@@ -20,12 +20,17 @@ public abstract class Entity {
     public int width, height;
     
     public boolean solid;
+    public boolean jumping = false;
+    public boolean falling = true;
     
     public int velX, velY;
     
     public Id id;
     
     public Handler handler;
+    
+    public double gravity = 0.0;
+    
     
     public Entity(int x, int y, int width, int height, boolean solid ,Id id , Handler handler)
     {

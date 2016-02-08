@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable
     public static final int HEIGHT = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height - 50;
     public static final int SCALE = 1;
     public static final String TITLE = "Super Hairy Joe";
-    
+    public static final int scale1 = 1;
     private Color randomColor;
     
     private Thread thread;
@@ -84,8 +84,8 @@ public class Game extends Canvas implements Runnable
         
         addKeyListener(new KeyInput());
         
-        handler.addEntity(new Player(200,400,32,64,true,Id.player,handler));
-        handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
+        handler.addEntity(new Player(200,400,32 * scale1 ,64 * scale1,true,Id.player,handler));
+        //handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
     }
     
     
