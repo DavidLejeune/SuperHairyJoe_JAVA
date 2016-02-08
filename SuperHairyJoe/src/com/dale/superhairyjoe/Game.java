@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable
     {
         handler = new Handler();
         
-        handler.addEntity(new Player(200,200,64,64,true,Id.player,handler));
+        handler.addEntity(new Player(200,200,32,64,true,Id.player,handler));
     }
     
     

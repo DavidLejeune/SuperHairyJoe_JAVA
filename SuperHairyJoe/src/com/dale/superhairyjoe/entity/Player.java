@@ -29,15 +29,16 @@ public class Player extends Entity{
         g.drawRect(x , y  , width ,  height);
         
         g.setColor(Color.RED);
-        g.fillRect(x + width /4 , y + height / 3 - 5 , width - 40, height - 40);
+        g.fillRect(x + 10 , y + height / 3 - 5 , width - 14, height - 40);
+        
  
         g.setColor(Color.BLUE);
-        g.fillRect(x + width /4 + 1, y + height / 3 + height - 40- 5, 10, 16);
-        g.fillRect(x + width /4 + 13, y + height / 3 + height - 40- 5, 10, 16);
+        g.fillRect(x + 8, y + height / 3 - 5  + height -40 , 8, 16);
+        g.fillRect(x +  width - 13, y + height / 3 - 5  + height -40 , 8, 16);
               
         g.setColor(Color.PINK);
-        g.fillRect(x + width /4 + 1, y + height / 3 + height - 40 + 16- 5, 11, 6);
-        g.fillRect(x + width /4 + 13, y + height / 3 + height - 40 + 16- 5, 11, 6);
+        g.fillRect(x + 8, y + height / 3 + height - 40 + 16- 5, 10, 6);
+        g.fillRect(x +  width - 13, y + height / 3 + height - 40 + 16- 5, 10, 6);
               
            
         g.setColor(Color.WHITE);
@@ -46,16 +47,16 @@ public class Player extends Entity{
         
         
         g.setColor(Color.RED);
-        g.fillRect(x + width /4 - 4 , y + height / 3 + 2 - 5, 5,  20);
-        g.fillRect(x + width /4 - 4 + width - 40, y + height / 3 + 2 - 5, 5,  20);
+        g.fillRect(x + 10 - 6 , y + height / 3 + 2 - 5, 5,  20);
+        g.fillRect(x + 10 - 4 +  width - 14, y + height / 3 + 2 - 5, 5,  20);
         g.setColor(Color.ORANGE);
-        g.drawRect(x + width /4 - 4 , y + height / 3 + 2 - 5, 5,  20);
-        g.drawRect(x + width /4 - 4 + width - 40, y + height / 3 + 2 - 5, 5,  20);
+        g.drawRect(x + 10 - 6  , y + height / 3 + 2 - 5, 5,  20);
+        g.drawRect(x + 10 - 4 +  width - 14, y + height / 3 + 2 - 5, 5,  20);
         
         
         
         g.setColor(Color.WHITE);
-        g.fillOval(x + width / 4 + 1, y  + 1,  width - 50, width - 50);
+        g.fillOval(x + width / 4 + 1, y  + 1,  height / 3 - 5, height / 3 - 5);
         g.setColor(Color.BLACK);
         g.fillOval(x + width / 4 + 6, y+5,  4, 4);
         g.fillOval(x + width / 4 + 12, y+5,  4, 4);
@@ -68,8 +69,8 @@ public class Player extends Entity{
         
         
         g.setColor(Color.WHITE);
-        g.fillOval(x + width /4 - 5  , y + height / 3 + 2 +20 - 5, 7,  7);
-        g.fillOval(x + width /4 - 5 + width - 40  , y + height / 3 + 2 +20 - 5, 7,  7);
+        g.fillOval(x + 10 - 8  , y + height / 3 + 2 +20 - 5, 7,  7);
+        g.fillOval(x + 10 - 6 +  width - 14 , y + height / 3 + 2 +20 - 5, 7,  7);
         
         
              
