@@ -6,6 +6,7 @@
 package com.dale.superhairyjoe;
 
 import com.dale.superhairyjoe.entity.Player;
+import com.dale.superhairyjoe.input.KeyInput;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -80,6 +81,8 @@ public class Game extends Canvas implements Runnable
     {
         handler = new Handler();
         
+        addKeyListener(new KeyInput());
+        
         handler.addEntity(new Player(200,200,32,64,true,Id.player,handler));
     }
     
@@ -87,6 +90,7 @@ public class Game extends Canvas implements Runnable
     public void run() 
     {
         init();
+        requestFocus();
         
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();

@@ -26,7 +26,6 @@ public class Player extends Entity{
         
         
         
-        setvelX(2);
         
         
     }
