@@ -27,9 +27,9 @@ import javax.swing.JFrame;
 public class Game extends Canvas implements Runnable 
 {
     
-    public static final int WIDTH = 270;
-    public static final int HEIGHT = WIDTH / 14 * 10;
-    public static final int SCALE = 4;
+    public static final int WIDTH = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+    public static final int HEIGHT = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height - 50;
+    public static final int SCALE = 1;
     public static final String TITLE = "Super Hairy Joe";
     
     private Color randomColor;
@@ -161,7 +161,7 @@ public class Game extends Canvas implements Runnable
     public Game()
     {
         //Setting the dimension of the game
-        Dimension size = new Dimension(WIDTH * SCALE , HEIGHT * SCALE);
+        Dimension size = new Dimension(WIDTH * SCALE , HEIGHT  * SCALE );
         setPreferredSize(size);
         setMaximumSize(size);
         setMinimumSize(size);
