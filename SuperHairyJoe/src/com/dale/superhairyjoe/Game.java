@@ -83,7 +83,7 @@ public class Game extends Canvas implements Runnable
         
         addKeyListener(new KeyInput());
         
-        handler.addEntity(new Player(200,200,32,64,true,Id.player,handler));
+        handler.addEntity(new Player(200,200,64,128,true,Id.player,handler));
     }
     
     
