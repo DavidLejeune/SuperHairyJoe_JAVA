@@ -79,6 +79,13 @@ public class Handler {
         for(int i =0;i<Game.WIDTH * Game.SCALE /64 + 1;i++)
         {
             addTile(new Wall(i*64,Game.HEIGHT * Game.SCALE -64,64,64,true,Id.wall,this));
+            //platform
+            if(i!=0&&i!=1&&1!=30&i!=31)
+            {
+                addTile(new Wall(i*64,Game.HEIGHT / 2 ,64,64,true,Id.wall,this));
+
+            }
+        
         }
     }
     
