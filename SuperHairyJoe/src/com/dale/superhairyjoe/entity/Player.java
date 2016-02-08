@@ -19,12 +19,19 @@ public class Player extends Entity{
 
     public Player(int x, int y, int width, int height, boolean solid, Id id, Handler handler) {
         super(x, y, width, height, solid, id, handler);
+        
+        setvelX(5);
+        
+        
     }
     
     public void render(Graphics g)
     {
         
+        g.setColor(Color.YELLOW);
+        g.fillRect(x , y  , width ,  height);
         
+        /*
         g.setColor(Color.GRAY);
         g.drawRect(x , y  , width ,  height);
         
@@ -71,7 +78,7 @@ public class Player extends Entity{
         g.setColor(Color.WHITE);
         g.fillOval(x + 10 - 8  , y + height / 3 + 2 +20 - 5, 7,  7);
         g.fillOval(x + 10 - 6 +  width - 14 , y + height / 3 + 2 +20 - 5, 7,  7);
-        
+        */
         
              
         
@@ -79,7 +86,8 @@ public class Player extends Entity{
     
     public void tick()
     {
-        
+        x+=velX;
+        y+=velY;
     }
     
     

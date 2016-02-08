@@ -150,7 +150,7 @@ public class Game extends Canvas implements Runnable
     
     public void tick()
     {
-        
+        handler.tick();
     }
     
     

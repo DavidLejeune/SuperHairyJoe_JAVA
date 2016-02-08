@@ -32,7 +32,7 @@ public class Handler {
         }
     }
     
-    public void Tick()
+    public void tick()
     {
         for(Entity en:entity)
         {
