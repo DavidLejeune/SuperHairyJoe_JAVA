@@ -5,9 +5,6 @@
  */
 package com.dale.superhairyjoe;
 
-import com.dale.superhairjoe.tile.Wall;
-import com.dale.superhairyjoe.entity.Player;
-import com.dale.superhairyjoe.input.KeyInput;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +12,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JFrame;
+
+import com.dale.superhairyjoe.entity.Player;
+import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.gfx.SpriteSheet;
+import com.dale.superhairyjoe.input.KeyInput;
 
 /**
  *
@@ -38,6 +41,9 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     public boolean running = false;
     public static Handler handler;
+    public static SpriteSheet sheet;
+    public static Sprite grass;
+    public static Sprite player;
     
     private synchronized void start()
     {
@@ -80,11 +86,16 @@ public class Game extends Canvas implements Runnable
     
     public void init()
     {
+    	sheet = new SpriteSheet("/res/spritesheet.png");
         handler = new Handler();
         
         addKeyListener(new KeyInput());
         
-        handler.addEntity(new Player(200,400,32 * scale1 ,64 * scale1,true,Id.player,handler));
+        grass = new Sprite(sheet,2,1);
+        player = new Sprite(sheet ,1,1);
+        
+        
+        handler.addEntity(new Player(200,400,64 * scale1 ,64 * scale1,true,Id.player,handler));
         //handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
     }
     

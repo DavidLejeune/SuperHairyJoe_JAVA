@@ -5,6 +5,7 @@
  */
 package com.dale.superhairjoe.tile;
 
+import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
 import java.awt.Color;
@@ -24,8 +25,10 @@ public class Wall extends Tile{
 
     public void render(Graphics g) 
     {
-        g.setColor(Color.RED);
-        g.fillRect(x,y,width, height);
+
+    	g.drawImage(Game.grass.getBufferedImage(), x, y, width, height, null);
+        //g.setColor(Color.RED);
+        //g.fillRect(x,y,width, height);
     }
 
     public void tick() 

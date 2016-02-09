@@ -19,7 +19,6 @@ public class Sprite {
     public Sprite(SpriteSheet sheet, int x, int y)
     {
         image = sheet.getSprite(x, y);
-        
     }
     
     public BufferedImage getBufferedImage()
