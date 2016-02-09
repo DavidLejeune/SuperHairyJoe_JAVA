@@ -86,7 +86,7 @@ public class Game extends Canvas implements Runnable
     
     public void init()
     {
-    	sheet = new SpriteSheet("/res/spritesheet.png");
+    	sheet = new SpriteSheet("/spritesheet.png");
         handler = new Handler();
         
         addKeyListener(new KeyInput());
