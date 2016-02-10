@@ -41,9 +41,9 @@ public class Player extends Entity{
         x+=velX;
         y+=velY;
         
-        if (x<=0) x=0;
+        //if (x<=0) x=0; removed to fall faster
         if (y<=0) y=0;
-        if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
+        //if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width; removed to fall faster
         if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
         
         if (velX!=0) animate=true;
@@ -62,7 +62,7 @@ public class Player extends Entity{
                     if (jumping)
                     {
                         jumping=false;
-                        gravity=0.0;
+                        gravity=0.8;
                         falling=true;
                     }
                     
@@ -78,7 +78,7 @@ public class Player extends Entity{
                 {
                     if(!falling && !jumping)
                     {
-                        gravity=0.0;
+                        gravity=0.8;
                         falling=true;
                     }
                 }
