@@ -19,7 +19,8 @@ import java.awt.Graphics;
 public class Player extends Entity{
 
 
-    private int scale = 1;
+    private int frame = 0;
+    private int frameDelay = 0;
     
     
     
@@ -112,14 +113,33 @@ public class Player extends Entity{
             
         }
         
+        frameDelay++;
+        if (frameDelay >= 3)
+        {
+            frame++;
+            if (frame >= 4)
+            {
+                frame=0;
+            }
+            frameDelay=0;
+        }
+        
         
     }
     
      public void render(Graphics g)
     {
-        
-    	g.drawImage(Game.player.getBufferedImage(), x, y, width, height, null);
-    	
+        if(facing==0)
+        {
+      	g.drawImage(Game.player[frame+4].getBufferedImage(), x, y, width, height, null);
+    	          
+        }
+        else if(facing==1)
+        {
+      	g.drawImage(Game.player[frame].getBufferedImage(), x, y, width, height, null);
+    	          
+        }   
+
     	 
         //g.setColor(Color.YELLOW);
         //g.fillRect(x , y  , width ,  height);
