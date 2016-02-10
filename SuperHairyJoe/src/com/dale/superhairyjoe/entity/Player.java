@@ -22,6 +22,7 @@ public class Player extends Entity{
     private int frame = 0;
     private int frameDelay = 0;
     
+    private boolean animate = false;
     
     
     public Player(int x, int y, int width, int height, boolean solid, Id id, Handler handler) {
@@ -44,6 +45,9 @@ public class Player extends Entity{
         if (y<=0) y=0;
         if (x + width >=Game.WIDTH * Game.SCALE) x=Game.WIDTH * Game.SCALE - width;
         if (y + height >=Game.HEIGHT * Game.SCALE) y=Game.HEIGHT  * Game.SCALE - height;
+        
+        if (velX!=0) animate=true;
+        else animate = false;
         
         for(Tile t:handler.tile)
         {
@@ -113,15 +117,18 @@ public class Player extends Entity{
             
         }
         
-        frameDelay++;
-        if (frameDelay >= 3)
+        if(animate)
         {
-            frame++;
-            if (frame >= 4)
+            frameDelay++;
+            if (frameDelay >= 3)
             {
-                frame=0;
-            }
-            frameDelay=0;
+                frame++;
+                if (frame >= 4)
+                {
+                    frame=0;
+                }
+                frameDelay=0;
+            }   
         }
         
         
