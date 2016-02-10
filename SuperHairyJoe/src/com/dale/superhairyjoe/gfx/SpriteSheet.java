@@ -33,7 +33,7 @@ public class SpriteSheet {
     
     public BufferedImage getSprite(int x, int y)
     {
-        return sheet.getSubimage(x*32-32, y*32-32, 32,32);
+        return sheet.getSubimage(x*64-64, y*64-64, 64,64);
     }
     
 }
