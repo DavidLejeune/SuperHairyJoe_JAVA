@@ -5,8 +5,8 @@
  */
 package com.dale.superhairyjoe;
 
-import com.dale.superhairjoe.tile.Tile;
-import com.dale.superhairjoe.tile.Wall;
+import com.dale.superhairyjoe.tile.Tile;
+import com.dale.superhairyjoe.tile.Wall;
 import com.dale.superhairyjoe.entity.Entity;
 import java.awt.Graphics;
 import java.util.LinkedList;

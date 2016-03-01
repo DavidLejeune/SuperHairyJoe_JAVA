@@ -5,7 +5,7 @@
  */
 package com.dale.superhairyjoe.entity;
 
-import com.dale.superhairjoe.tile.Tile;
+import com.dale.superhairyjoe.tile.Tile;
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
