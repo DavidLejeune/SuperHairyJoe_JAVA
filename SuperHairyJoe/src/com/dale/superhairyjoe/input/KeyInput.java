@@ -6,6 +6,7 @@
 package com.dale.superhairyjoe.input;
 
 import com.dale.superhairyjoe.Game;
+import com.dale.superhairyjoe.Id;
 import com.dale.superhairyjoe.entity.Entity;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -22,29 +23,33 @@ public class KeyInput implements KeyListener{
         int key = e.getKeyCode();
         for(Entity en: Game.handler.entity)
         {
-            switch(key)
-           {
-               case KeyEvent.VK_LEFT:
-                   en.setvelX(-5);
-                   en.facing=0;
-                   break;
-               case KeyEvent.VK_RIGHT:
-                   en.setvelX(5);
-                   en.facing=1;
-                   break;
-               case KeyEvent.VK_UP:
-                   //en.setvelY(-5);
-                   if(!en.jumping) 
+            if (en.getId()==Id.player)
+            {
+                
+                    switch(key)
                    {
-                       en.jumping = true;
-                       en.gravity = 10.0;
-                   }
-                   break;
-               case KeyEvent.VK_DOWN:
-                   en.setvelY(5);
-                   break;
+                       case KeyEvent.VK_LEFT:
+                           en.setvelX(-5);
+                           en.facing=0;
+                           break;
+                       case KeyEvent.VK_RIGHT:
+                           en.setvelX(5);
+                           en.facing=1;
+                           break;
+                       case KeyEvent.VK_UP:
+                           //en.setvelY(-5);
+                           if(!en.jumping) 
+                           {
+                               en.jumping = true;
+                               en.gravity = 10.0;
+                           }
+                           break;
+                       case KeyEvent.VK_DOWN:
+                           en.setvelY(5);
+                           break;
 
-           }           
+                   }           
+            }
         }
 
         
@@ -55,22 +60,26 @@ public class KeyInput implements KeyListener{
         int key = e.getKeyCode();
         for(Entity en: Game.handler.entity)
         {
-            switch(key)
-           {
-               case KeyEvent.VK_LEFT:
-                   en.setvelX(0);
-                   break;
-               case KeyEvent.VK_RIGHT:
-                   en.setvelX(0);
-                   break;
-               case KeyEvent.VK_UP:
-                   en.setvelY(0);
-                   break;
-               case KeyEvent.VK_DOWN:
-                   en.setvelY(0);
-                   break;
+            if (en.getId()==Id.player)
+            {
+                
+                    switch(key)
+                   {
+                       case KeyEvent.VK_LEFT:
+                           en.setvelX(0);
+                           break;
+                       case KeyEvent.VK_RIGHT:
+                           en.setvelX(0);
+                           break;
+                       case KeyEvent.VK_UP:
+                           en.setvelY(0);
+                           break;
+                       case KeyEvent.VK_DOWN:
+                           en.setvelY(0);
+                           break;
 
-           }             
+                   }    
+            }
         }
         
     }

@@ -35,9 +35,9 @@ import javax.imageio.ImageIO;
 
 public class Game extends Canvas implements Runnable 
 {
-    
     public static final int WIDTH = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
-    public static final int HEIGHT = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height - 50;
+    public static final int HEIGHT = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height; 
+
     public static final int SCALE = 1;
     public static final String TITLE = "Super Hairy Joe";
     public static final int scale1 = 1;
@@ -46,9 +46,12 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     public boolean running = false;
     public static Handler handler;
+    
     public static SpriteSheet sheet;
     public static Sprite grass;
     public static Sprite player[] = new Sprite[8];
+    public static Sprite mushroom;
+    
     public static Camera cam;
     
     private BufferedImage image;
@@ -105,6 +108,10 @@ public class Game extends Canvas implements Runnable
         
         grass = new Sprite(sheet,2,1);
         player = new Sprite[8];
+        mushroom = new Sprite(sheet,3,1);
+        
+        
+        
         
         for(int i = 0;i<player.length;i++)
         {

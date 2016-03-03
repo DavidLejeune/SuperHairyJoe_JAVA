@@ -99,6 +99,38 @@ public class Player extends Entity{
                 }
             }
         }
+        
+        
+        for (int i=0 ; i <handler.entity.size() ; i++)
+        {
+            Entity e = handler.entity.get(i);
+            
+            if (e.getId()==Id.mushroom)
+            {
+                //check if we are colliding with the mushroom
+                if(getBounds().intersects(e.getBounds()))
+                {
+                    //to prevent teleportation
+                    int tpX = getX();
+                    int tpY = getY();
+                    
+                    
+                    width*=2;
+                    height*=2;
+                    
+                    setX(tpX - width);
+                    setY(tpY - height);
+                    
+                    
+                    e.die();
+                }
+            }
+            
+        }
+        
+        
+        
+        
         if (jumping)
            
         {

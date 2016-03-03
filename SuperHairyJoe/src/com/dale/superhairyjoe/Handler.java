@@ -9,6 +9,7 @@ import com.dale.superhairyjoe.tile.Tile;
 import com.dale.superhairyjoe.tile.Wall;
 import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.Player;
+import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
@@ -144,6 +145,9 @@ public class Handler {
                 
                //player= blue
                 if (red==0 && green==0 && blue==255) addEntity(new Player(x*64,y*64,64,64,false,Id.player,this));
+                
+               //mushroom= red
+                if (red==255 && green==0 && blue==0) addEntity(new Mushroom(x*64,y*64,64,64,true,Id.mushroom,this));
                 
                 
                 
