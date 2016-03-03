@@ -20,6 +20,9 @@ import com.dale.superhairyjoe.entity.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
 import com.dale.superhairyjoe.input.KeyInput;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -47,6 +50,8 @@ public class Game extends Canvas implements Runnable
     public static Sprite grass;
     public static Sprite player[] = new Sprite[8];
     public static Camera cam;
+    
+    private BufferedImage image;
     
     private synchronized void start()
     {
@@ -89,6 +94,8 @@ public class Game extends Canvas implements Runnable
     
     public void init()
     {
+        
+        
         cam = new Camera();
         
     	sheet = new SpriteSheet("/spritesheet.png");
@@ -97,14 +104,26 @@ public class Game extends Canvas implements Runnable
         addKeyListener(new KeyInput());
         
         grass = new Sprite(sheet,2,1);
+        player = new Sprite[8];
+        
         for(int i = 0;i<player.length;i++)
         {
             player[i]= new Sprite(sheet, i+1,16);
         }
         
         
-        handler.addEntity(new Player(200,400,64 * scale1 ,64 * scale1,true,Id.player,handler));
-        //handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
+            //handler.addEntity(new Player(200,400,64 * scale1 ,64 * scale1,true,Id.player,handler));
+            //handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
+        
+        
+        try {
+            image = ImageIO.read(getClass().getResource("/level.png"));                       
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        handler.createLevel(image);
+        
     }
     
     
