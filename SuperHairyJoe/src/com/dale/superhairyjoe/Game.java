@@ -24,6 +24,7 @@ import com.dale.superhairyjoe.input.KeyInput;
  *
  * @author David
  * @about this is the Main class for the game
+ * new source location skydrive/dale/superhairyjoe_java
  * 
  */
 
