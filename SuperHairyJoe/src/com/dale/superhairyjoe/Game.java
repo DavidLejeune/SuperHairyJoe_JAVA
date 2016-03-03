@@ -5,6 +5,7 @@
  */
 package com.dale.superhairyjoe;
 
+import com.dale.superhairyjoe.entity.Entity;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable
     public static SpriteSheet sheet;
     public static Sprite grass;
     public static Sprite player[] = new Sprite[8];
+    public static Camera cam;
     
     private synchronized void start()
     {
@@ -87,6 +89,8 @@ public class Game extends Canvas implements Runnable
     
     public void init()
     {
+        cam = new Camera();
+        
     	sheet = new SpriteSheet("/spritesheet.png");
         handler = new Handler();
         
@@ -145,6 +149,17 @@ public class Game extends Canvas implements Runnable
     }
     
     
+    public int getFrameWidth()
+    {
+        return WIDTH * SCALE;
+    }
+    
+    public int getFrameHeight()
+    {
+        return HEIGHT * SCALE;
+    }
+    
+    
     public void render()
     {
         BufferStrategy bs = getBufferStrategy();
@@ -162,6 +177,9 @@ public class Game extends Canvas implements Runnable
         //g.setColor(Color.RED);
         //g.fillRect(200, 200, getWidth() - 400 , getHeight() - 400);
           
+        
+        g.translate(cam.getX(), cam.getY());
+        
         handler.render(g);
         
         g.dispose();
@@ -172,6 +190,15 @@ public class Game extends Canvas implements Runnable
     public void tick()
     {
         handler.tick();
+        
+        for(Entity e:handler.entity)
+        {
+            if(e.getId()==Id.player)
+            {
+                cam.tick(e);
+            }
+        }
+        
     }
     
     
