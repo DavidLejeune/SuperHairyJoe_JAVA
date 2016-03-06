@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dale.superhairyjoe.entity;
+package com.dale.superhairyjoe.entity.mob;
 
 import com.dale.superhairyjoe.tile.Tile;
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
+import com.dale.superhairyjoe.entity.Entity;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -19,8 +20,7 @@ import java.awt.Graphics;
 public class Player extends Entity{
 
 
-    private int frame = 0;
-    private int frameDelay = 0;
+
     
     private boolean animate = false;
     
@@ -114,15 +114,32 @@ public class Player extends Entity{
                     int tpX = getX();
                     int tpY = getY();
                     
-                    
+                    //mushroom powerup
                     width*=2;
                     height*=2;
                     
+                    
+                    //to prevent teleportation
                     setX(tpX - width);
                     setY(tpY - height);
                     
                     
                     e.die();
+                }
+            }            
+            else if (e.getId()==Id.goomba)
+            {
+                //check if we are colliding with the top of mushroom
+                if(getBoundsBottom().intersects(e.getBoundsTop()))
+                    
+                {
+                    e.die();
+                }
+                //check if we are colliding with the mushroom
+                else if(getBounds().intersects(e.getBounds()))
+                {
+        
+                    die();
                 }
             }
             
@@ -152,7 +169,7 @@ public class Player extends Entity{
         if(animate)
         {
             frameDelay++;
-            if (frameDelay >= 3)
+            if (frameDelay >= 10)
             {
                 frame++;
                 if (frame >= 4)
@@ -162,6 +179,20 @@ public class Player extends Entity{
                 frameDelay=0;
             }   
         }
+        
+//        if(velX!=0)
+//        {
+//            frameDelay++;
+//            if(frameDelay>=10)
+//            {
+//                frame++;
+//                if(frame>3)
+//                {
+//                    frame=0;
+//                }
+//                frameDelay=0;
+//            }
+//        }
         
         
     }

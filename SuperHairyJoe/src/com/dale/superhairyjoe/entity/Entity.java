@@ -24,6 +24,9 @@ public abstract class Entity {
     public boolean falling = true;
     public int facing=0;   //0=left    1=right
     
+    public int frame = 0;
+    public int frameDelay = 0;
+    
     public int velX, velY;
     
     

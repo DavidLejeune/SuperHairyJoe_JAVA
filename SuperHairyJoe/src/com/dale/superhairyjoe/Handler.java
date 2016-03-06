@@ -8,7 +8,8 @@ package com.dale.superhairyjoe;
 import com.dale.superhairyjoe.tile.Tile;
 import com.dale.superhairyjoe.tile.Wall;
 import com.dale.superhairyjoe.entity.Entity;
-import com.dale.superhairyjoe.entity.Player;
+import com.dale.superhairyjoe.entity.mob.Goomba;
+import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -148,6 +149,9 @@ public class Handler {
                 
                //mushroom= red
                 if (red==255 && green==0 && blue==0) addEntity(new Mushroom(x*64,y*64,64,64,true,Id.mushroom,this));
+                
+               //goomba=ornage
+                if (red==100 && green==100 && blue==100) addEntity(new Goomba(x*64,y*64,64,64,true,Id.goomba,this));
                 
                 
                 

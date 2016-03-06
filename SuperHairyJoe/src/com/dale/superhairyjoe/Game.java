@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
-import com.dale.superhairyjoe.entity.Player;
+import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
 import com.dale.superhairyjoe.input.KeyInput;
@@ -51,6 +51,7 @@ public class Game extends Canvas implements Runnable
     public static Sprite grass;
     public static Sprite player[] = new Sprite[8];
     public static Sprite mushroom;
+    public static Sprite goomba[];
     
     public static Camera cam;
     
@@ -109,16 +110,22 @@ public class Game extends Canvas implements Runnable
         grass = new Sprite(sheet,2,1);
         player = new Sprite[8];
         mushroom = new Sprite(sheet,3,1);
+        goomba = new Sprite[8];
         
         
-        
-        
+        //draw player animation
         for(int i = 0;i<player.length;i++)
         {
             player[i]= new Sprite(sheet, i+1,16);
+        }        
+        
+        //draw goomba (enemy) animation
+        for(int i = 0;i<goomba.length;i++)
+        {
+            goomba[i]= new Sprite(sheet, i+1,15);
         }
         
-        
+            // old init before level design with png    
             //handler.addEntity(new Player(200,400,64 * scale1 ,64 * scale1,true,Id.player,handler));
             //handler.addTile(new Wall(200,200,64,64,true,Id.wall, handler));
         
