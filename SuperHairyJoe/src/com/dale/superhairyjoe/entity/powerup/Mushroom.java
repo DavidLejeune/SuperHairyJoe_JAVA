@@ -23,8 +23,8 @@ public class Mushroom extends Entity{
     
     private Random random = new Random();
 
-    public Mushroom(int x, int y, int width, int height, boolean solid, Id id, Handler handler) {
-        super(x, y, width, height, solid, id, handler);
+    public Mushroom(int x, int y, int width, int height, Id id, Handler handler) {
+        super(x, y, width, height, id, handler);
         
         int dir = random.nextInt(2);
         

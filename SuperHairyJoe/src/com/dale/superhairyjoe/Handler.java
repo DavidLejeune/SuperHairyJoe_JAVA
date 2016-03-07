@@ -145,13 +145,13 @@ public class Handler {
                 if (red==0 && green==0 && blue==0) addTile(new Wall(x*64,y*64,64,64,true,Id.wall,this));
                 
                //player= blue
-                if (red==0 && green==0 && blue==255) addEntity(new Player(x*64,y*64,64,64,false,Id.player,this));
+                if (red==0 && green==0 && blue==255) addEntity(new Player(x*64,y*64,64,64,Id.player,this));
                 
                //mushroom= red
-                if (red==255 && green==0 && blue==0) addEntity(new Mushroom(x*64,y*64,64,64,true,Id.mushroom,this));
+                if (red==255 && green==0 && blue==0) addEntity(new Mushroom(x*64,y*64,64,64,Id.mushroom,this));
                 
                //goomba=ornage
-                if (red==100 && green==100 && blue==100) addEntity(new Goomba(x*64,y*64,64,64,true,Id.goomba,this));
+                if (red==100 && green==100 && blue==100) addEntity(new Goomba(x*64,y*64,64,64,Id.goomba,this));
                 
                 
                 
