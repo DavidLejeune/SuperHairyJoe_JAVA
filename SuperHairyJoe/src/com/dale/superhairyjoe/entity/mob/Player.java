@@ -36,6 +36,7 @@ public class Player extends Entity{
     }
     
    
+    @Override
     public void tick()
     {
         x+=velX;
@@ -65,6 +66,7 @@ public class Player extends Entity{
                         gravity=0.8;
                         falling=true;
                     }
+
                     
                     
                 } 
@@ -98,8 +100,33 @@ public class Player extends Entity{
                     x = t.getX() - t.width  ;
                 }
             }
+            
+                                if (t.getId()==Id.powerUp)
+                    {
+                        if(getBoundsTop().intersects(t.getBounds()))
+                        {
+                            System.out.println("hit Powerup ");
+                            t.activated = true;
+                        }
+                    }
+            
+            
+            
         }
         
+//        for (int i=0 ; i <handler.tile.size() ; i++)
+//        {
+//            Tile t = handler.tile.get(i);
+//            
+//                    if (t.getId()==Id.powerUp)
+//                    {
+//                        if(getBoundsTop().intersects(t.getBounds()))
+//                        {
+//                            System.out.println("hit Powerup ");
+//                            t.activated = true;
+//                        }
+//                    }      
+//        }
         
         for (int i=0 ; i <handler.entity.size() ; i++)
         {
@@ -141,7 +168,10 @@ public class Player extends Entity{
         
                     die();
                 }
-            }
+            } 
+            
+            
+            
             
         }
         
@@ -197,6 +227,7 @@ public class Player extends Entity{
         
     }
     
+    @Override
      public void render(Graphics g)
     {
         if(facing==0)

@@ -48,6 +48,7 @@ public class Goomba extends Entity{
     
 
     
+    @Override
       public void render(Graphics g)
     {
         if(facing==0)
@@ -64,6 +65,7 @@ public class Goomba extends Entity{
         
         
     }
+    @Override
     public void tick()
     {
         x+=velX;

@@ -23,6 +23,7 @@ public class Wall extends Tile{
     
     
 
+    @Override
     public void render(Graphics g) 
     {
 
@@ -31,6 +32,7 @@ public class Wall extends Tile{
         //g.fillRect(x,y,width, height);
     }
 
+    @Override
     public void tick() 
     {
         

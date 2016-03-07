@@ -41,11 +41,13 @@ public class Mushroom extends Entity{
     }
     
     
+    @Override
     public void render(Graphics g)
     {
         g.drawImage(Game.mushroom.getBufferedImage(),x,y,width,height,null);
         
     }
+    @Override
     public void tick()
     {
         x+=velX;

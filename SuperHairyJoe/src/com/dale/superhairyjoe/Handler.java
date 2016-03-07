@@ -11,6 +11,7 @@ import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.mob.Goomba;
 import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
+import com.dale.superhairyjoe.tile.PowerUpBlock;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
@@ -153,7 +154,10 @@ public class Handler {
                //goomba=ornage
                 if (red==100 && green==100 && blue==100) addEntity(new Goomba(x*64,y*64,64,64,Id.goomba,this));
                 
+               //powerup
+                if (red==75 && green==75 && blue==75) addTile(new PowerUpBlock(x*64,y*64,64,64,true,Id.powerUp,this,Game.mushroom));
                 
+                                
                 
             }
         }

@@ -27,6 +27,8 @@ public abstract class Tile {
     
     public Handler handler;
     
+    public boolean activated = false;
+    
     public Tile(int x, int y, int width, int height, boolean solid,Id id , Handler handler)
     {
         this.x = x;
@@ -99,5 +101,8 @@ public abstract class Tile {
     {
         return new Rectangle(getX(),getY(),width, height);
     }
+        
+        
+
     
 }

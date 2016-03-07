@@ -52,6 +52,8 @@ public class Game extends Canvas implements Runnable
     public static Sprite player[] = new Sprite[8];
     public static Sprite mushroom;
     public static Sprite goomba[];
+    public static Sprite powerUp;
+    public static Sprite usedPowerUp;
     
     public static Camera cam;
     
@@ -111,6 +113,8 @@ public class Game extends Canvas implements Runnable
         player = new Sprite[8];
         mushroom = new Sprite(sheet,3,1);
         goomba = new Sprite[8];
+        powerUp = new Sprite(sheet,4,1);
+        usedPowerUp = new Sprite(sheet,5,1);
         
         
         //draw player animation
