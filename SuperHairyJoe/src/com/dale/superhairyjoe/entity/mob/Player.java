@@ -101,32 +101,32 @@ public class Player extends Entity{
                 }
             }
             
-                                if (t.getId()==Id.powerUp)
+//            if (t.getId()==Id.powerUp)
+//            {
+//                if(getBoundsTop().intersects(t.getBounds()))
+//                {
+//                    System.out.println("hit Powerup ");
+//                    t.activated = true;
+//                }
+//            }
+            
+            
+            
+        }
+        
+        for (int i=0 ; i <handler.tile.size() ; i++)
+        {
+            Tile t = handler.tile.get(i);
+            
+                    if (t.getId()==Id.powerUp)
                     {
                         if(getBoundsTop().intersects(t.getBounds()))
                         {
                             System.out.println("hit Powerup ");
                             t.activated = true;
                         }
-                    }
-            
-            
-            
+                    }      
         }
-        
-//        for (int i=0 ; i <handler.tile.size() ; i++)
-//        {
-//            Tile t = handler.tile.get(i);
-//            
-//                    if (t.getId()==Id.powerUp)
-//                    {
-//                        if(getBoundsTop().intersects(t.getBounds()))
-//                        {
-//                            System.out.println("hit Powerup ");
-//                            t.activated = true;
-//                        }
-//                    }      
-//        }
         
         for (int i=0 ; i <handler.entity.size() ; i++)
         {
