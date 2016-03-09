@@ -10,6 +10,7 @@ import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.Id;
 import com.dale.superhairyjoe.entity.Entity;
+import com.dale.superhairyjoe.states.PlayerState;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -20,7 +21,7 @@ import java.awt.Graphics;
 public class Player extends Entity{
 
 
-
+    private PlayerState state;
     
     private boolean animate = false;
     
@@ -29,7 +30,7 @@ public class Player extends Entity{
         super(x, y, width, height, solid, id, handler);
         
         
-        
+        state = PlayerState.SMALL;
         
         
         
@@ -124,6 +125,12 @@ public class Player extends Entity{
                     setY(tpY - height);
                     
                     
+                    if (state == PlayerState.SMALL)
+                    {
+                        state = PlayerState.BIG;
+                    }
+                    
+                    
                     e.die();
                 }
             }            
@@ -138,8 +145,18 @@ public class Player extends Entity{
                 //check if we are colliding with the mushroom
                 else if(getBounds().intersects(e.getBounds()))
                 {
-        
-                    die();
+                    if (state == PlayerState.BIG)
+                    {
+                        state = PlayerState.SMALL;
+                        width/=2;
+                        height/=2;
+                        x+=width;
+                        y+=height;
+                    }
+                    else if (state == PlayerState.SMALL)
+                    {
+                        die();
+                    }
                 }
             }
             
