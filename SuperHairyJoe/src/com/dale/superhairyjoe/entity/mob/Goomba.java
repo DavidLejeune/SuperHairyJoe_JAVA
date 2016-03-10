@@ -65,7 +65,7 @@ public class Goomba extends Entity{
         
         
     }
-    @Override
+    //@Override
     public void tick()
     {
         x+=velX;
