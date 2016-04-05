@@ -125,7 +125,7 @@ public class Player
             this.height /= 2;
             this.x += this.width;
             this.y += this.height;
-            
+            gameObject.die();
           }
           else if (this.state == PlayerState.SMALL)
           {
