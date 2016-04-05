@@ -90,12 +90,59 @@ public class Player
           this.x = (gameObject.getX() - gameObject.width);
         }
       }
+      
+      
+      // Pop the mushroom when the powerupblock is hit from the bottom
       if (((gameObject instanceof PowerUpBlock)) && 
         (getBoundsTop().intersects(((PowerUpBlock)gameObject).getBounds())))
       {
         System.out.println("hit Powerup ");
         ((PowerUpBlock)gameObject).activated = true;
       }
+      
+      
+      
+      // Making the powerupblock solid (like a normal wall)
+      if ((gameObject instanceof PowerUpBlock))
+      {
+        if (getBoundsTop().intersects(gameObject.getBounds()))
+        {
+          setvelY(0);
+          if (this.jumping)
+          {
+            this.jumping = false;
+            this.gravity = 0.8D;
+            this.falling = true;
+          }
+        }
+        if (getBoundsBottom().intersects(gameObject.getBounds()))
+        {
+          setvelY(0);
+          if (this.falling) {
+            this.falling = false;
+          }
+        }
+        else if ((!this.falling) && (!this.jumping))
+        {
+          this.gravity = 0.8D;
+          this.falling = true;
+        }
+        if (getBoundsLeft().intersects(gameObject.getBounds()))
+        {
+          setvelX(0);
+          this.x = (gameObject.getX() + gameObject.width);
+        }
+        if (getBoundsRight().intersects(gameObject.getBounds()))
+        {
+          setvelX(0);
+          
+          this.x = (gameObject.getX() - gameObject.width);
+        }
+      }  
+      
+      
+      
+      
       if ((gameObject instanceof Mushroom))
       {
         if (getBounds().intersects(gameObject.getBounds()))
