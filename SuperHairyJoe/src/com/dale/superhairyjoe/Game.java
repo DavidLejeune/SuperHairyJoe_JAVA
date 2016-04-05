@@ -5,6 +5,7 @@ import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
 import com.dale.superhairyjoe.input.KeyInput;
+import com.dale.superhairyjoe.weapon.Birdshit;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +16,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -43,6 +45,10 @@ public class Game
   public static Sprite usedPowerUp;
   public static Camera cam;
   private BufferedImage image;
+  
+  
+//  public static ArrayList<Birdshit> birdshit;
+  
   
   private synchronized void start()
   {
@@ -75,6 +81,9 @@ public class Game
   
   public void init()
   {
+      
+//    birdshit = new ArrayList<Birdshit>();  
+      
     cam = new Camera();
     
     sheet = new SpriteSheet("/spritesheet.png");
@@ -171,6 +180,17 @@ public class Game
     
     g.dispose();
     bs.show();
+    
+    
+    
+//    for (int i = 0; i < birdshit.size(); i++)
+//      {
+//          birdshit.draw(g);
+//      }  
+    
+    
+    
+    
   }
   
   public void tick()
@@ -182,7 +202,26 @@ public class Game
         cam.tick(gameObject);
         break;
       }
+      
+//      for (int i = 0; i < birdshit.size(); i++)
+//      {
+//          boolean remove = birdshit.get(i).update();
+//          if(remove)
+//          {
+//              birdshit.remove(i);
+//              i--;
+//          }
+//      }
+      
+      
+      
+      
     }
+    
+    
+    
+    
+    
   }
   
   public Game()
