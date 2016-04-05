@@ -3,6 +3,7 @@ package com.dale.superhairyjoe;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.mob.Goomba;
 import com.dale.superhairyjoe.entity.mob.Player;
+import com.dale.superhairyjoe.entity.mob.Seagull;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
@@ -71,6 +72,9 @@ public class Handler
         }
         if ((red == 75) && (green == 75) && (blue == 75)) {
           addGameObject(new PowerUpBlock(x * 64, y * 64, 64, 64, this, Game.mushroom));
+        }
+        if ((red == 25) && (green == 25) && (blue == 25)) {
+          addGameObject(new Seagull(x * 64, y * 64, 64, 64, this));
         }
       }
     }

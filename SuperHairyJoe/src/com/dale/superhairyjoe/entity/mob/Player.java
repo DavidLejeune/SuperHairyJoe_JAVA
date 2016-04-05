@@ -125,6 +125,8 @@ public class Player
             this.height /= 2;
             this.x += this.width;
             this.y += this.height;
+            //remove the goomba after hit, else it always double hits
+            //the player and player dies
             gameObject.die();
           }
           else if (this.state == PlayerState.SMALL)

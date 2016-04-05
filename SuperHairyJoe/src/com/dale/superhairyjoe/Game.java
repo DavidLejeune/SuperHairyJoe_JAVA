@@ -38,6 +38,7 @@ public class Game
   public static Sprite[] player = new Sprite[8];
   public static Sprite mushroom;
   public static Sprite[] goomba;
+  public static Sprite[] seagull;
   public static Sprite powerUp;
   public static Sprite usedPowerUp;
   public static Camera cam;
@@ -85,6 +86,7 @@ public class Game
     player = new Sprite[8];
     mushroom = new Sprite(sheet, 3, 1);
     goomba = new Sprite[8];
+    seagull = new Sprite[8];
     powerUp = new Sprite(sheet, 4, 1);
     usedPowerUp = new Sprite(sheet, 5, 1);
     for (int i = 0; i < player.length; i++) {
@@ -92,6 +94,9 @@ public class Game
     }
     for (int i = 0; i < goomba.length; i++) {
       goomba[i] = new Sprite(sheet, i + 1, 15);
+    }
+    for (int i = 0; i < seagull.length; i++) {
+      seagull[i] = new Sprite(sheet, i + 1, 14);
     }
     try
     {
