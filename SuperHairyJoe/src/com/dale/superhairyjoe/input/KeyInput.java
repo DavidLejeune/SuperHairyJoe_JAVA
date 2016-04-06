@@ -4,6 +4,7 @@ import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.mob.Player;
+import com.dale.superhairyjoe.sounds.Sound;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -30,6 +31,8 @@ public class KeyInput
           {
             player.jumping = true;
             player.gravity = 10.0D;
+            
+            Sound.play("Jump.wav"); 
           }
           break;
         case 40: 
