@@ -129,7 +129,7 @@ public abstract class Entity
   
   protected void move()
   {
-    this.x += this.velX;
+    this.x += this.velX ;
     this.y += this.velY;
   }
 }

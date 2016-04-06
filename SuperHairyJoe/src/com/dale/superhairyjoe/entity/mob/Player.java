@@ -41,9 +41,9 @@ public class Player
     if (this.y <= 0) {
       this.y = 0;
     }
-    if (this.y + this.height >= Game.HEIGHT * 1) {
-      this.y = (Game.HEIGHT * 1 - this.height);
-    }
+//    if (this.y + this.height >= Game.HEIGHT * 1) {
+//      this.y = (Game.HEIGHT * 1 - this.height);
+//    }
     if (this.velX != 0) {
       this.animate = true;
     } else {
@@ -150,8 +150,8 @@ public class Player
           int tpX = getX();
           int tpY = getY();
           
-          this.width *= 2;
-          this.height *= 2;
+          this.width *= 1.1;
+          this.height *= 1.1;
           
           setX(tpX - this.width);
           setY(tpY - this.height);

@@ -5,7 +5,6 @@ import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
 import com.dale.superhairyjoe.input.KeyInput;
-import com.dale.superhairyjoe.weapon.Birdshit;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
