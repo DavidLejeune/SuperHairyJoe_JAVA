@@ -181,6 +181,7 @@ public class Player
         } else if (getBounds().intersects(gameObject.getBounds())) {
           if (this.state == PlayerState.BIG)
           {
+          Sound.play("power-down.wav"); 
             this.state = PlayerState.SMALL;
             this.width /= 2;
             this.height /= 2;
