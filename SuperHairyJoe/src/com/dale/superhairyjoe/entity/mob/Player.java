@@ -7,6 +7,7 @@ import com.dale.superhairyjoe.entity.Entity.Direction;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Coin;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
@@ -148,6 +149,8 @@ public class Player
         {
           Game.coins ++ ;
           gameObject.die();
+          
+            Sound.play("coin.wav"); 
         }
       }
       

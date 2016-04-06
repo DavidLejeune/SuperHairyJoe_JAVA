@@ -283,7 +283,7 @@ public class Game
          System.out.println(""+introTime);
      }
 
-     if (introTime >=200)
+     if (introTime >=300)
      {
          gameStatus=2;
          showIntro=false;
