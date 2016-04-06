@@ -84,6 +84,14 @@ public class Handler
     }
   }
   
+
+  public void clearLevel()
+  {
+          gameObjects.clear();
+  }
+
+  
+  
   public LinkedList<GameObject> getNearObjects(GameObject gameObject)
   {
     int distance = 100;

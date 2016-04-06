@@ -188,6 +188,8 @@ public class Player
           else if (this.state == PlayerState.SMALL)
           {
             die();
+            Game.lives--;
+            Game.showDeathScreen = true;
           }
         }
       }

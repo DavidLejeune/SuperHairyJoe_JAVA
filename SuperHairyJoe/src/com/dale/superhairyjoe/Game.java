@@ -49,6 +49,13 @@ public class Game
   
   public static Sprite coin;
   public static int coins=0;
+  public static Sprite life;
+  public static int lives=3;
+  
+  
+  public static boolean showDeathScreen = false;
+  public static int deathScreenTime = 0;
+  public static boolean startGame=false;
   
 //  public static ArrayList<Birdshit> birdshit;
   
@@ -104,6 +111,7 @@ public class Game
     
     
     coin = new Sprite(sheet,6,1);
+    life = new Sprite(sheet,1,16);
     
     
     for (int i = 0; i < player.length; i++) {
@@ -123,7 +131,8 @@ public class Game
     {
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
-    handler.createLevel(this.image);
+    
+        handler.createLevel(this.image);
   }
   
   public void run()
@@ -189,16 +198,23 @@ public class Game
     g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
     g.setColor(Color.WHITE);
     g.setFont(new Font("Courier", Font.BOLD , 25));
-    g.drawString("x " + coins, 75,50);
+    g.drawString("x " + coins, 80,50);
     
-    
+     //Draw the nr of lives on the screen
+    //Must be before translate & handler.render , so i doesnt move with the camera
+    g.drawImage(Game.life.getBufferedImage(),5,80, 75,75,null);
+    g.setColor(Color.WHITE);
+    g.setFont(new Font("Courier", Font.BOLD , 25));
+    g.drawString("x " + lives, 80,125);   
     
     g.translate(cam.getX(), cam.getY());
     
     handler.render(g);
     
     g.dispose();
+
     bs.show();
+
     
     
     
@@ -215,6 +231,12 @@ public class Game
   public void tick()
   {
     handler.tick();
+    
+    
+    
+    
+    
+    
     for (GameObject gameObject : handler.gameObjects) {
       if ((gameObject instanceof Player))
       {
@@ -232,11 +254,30 @@ public class Game
 //          }
 //      }
       
-      
-      
+     if(showDeathScreen) 
+     {
+         deathScreenTime++;
+         
+     }
+         
+        
+
+     
+     
+     if (deathScreenTime >=20000)
+     {
+         
+         System.out.println("dst " + deathScreenTime);
+         showDeathScreen = false;
+         deathScreenTime=0;
+         handler.clearLevel();
+         init();
+         System.out.println("end ds");
+     }
+     
       
     }
-    
+            
     
     
     
