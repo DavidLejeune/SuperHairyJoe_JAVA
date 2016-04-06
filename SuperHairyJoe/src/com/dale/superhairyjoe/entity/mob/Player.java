@@ -1,6 +1,7 @@
 package com.dale.superhairyjoe.entity.mob;
 
 import com.dale.superhairyjoe.Game;
+import static com.dale.superhairyjoe.Game.handler;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.Entity.Direction;
@@ -195,7 +196,29 @@ public class Player
           {
             die();
             Game.lives--;
-            Game.showDeathScreen = true;
+            
+            
+            
+            
+            
+            if(Game.lives==0)
+            {
+                
+                Sound.play("game_over.wav"); 
+                Game.gameStatus=0;
+                handler.clearLevel();
+                //Game.showIntro=true;
+            }
+            else
+            {
+                
+                Sound.play("lost_life.wav"); 
+            }
+                Game.showDeathScreen = true;
+            
+            
+            
+            
           }
         }
       }

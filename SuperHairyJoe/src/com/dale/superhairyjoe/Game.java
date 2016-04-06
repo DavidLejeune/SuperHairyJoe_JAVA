@@ -52,7 +52,7 @@ public class Game
   public static Sprite coin;
   public static int coins=0;
   public static Sprite life;
-  public static int lives=3;
+  public static int lives=1;
   
   
   public static boolean showDeathScreen = false;
@@ -291,18 +291,21 @@ public class Game
          
          
          handler.clearLevel();
-         init();
          System.out.println("end intro");
+         gameStatus=2;
+         init();
+         
      }  
     
     
      //deathscreen
      if(showDeathScreen) 
      {
+          
          deathScreenTime++;
          
      }
-     if (deathScreenTime >=180)
+     if (deathScreenTime >=250)
      {
          
          System.out.println("dst " + deathScreenTime);
@@ -311,6 +314,16 @@ public class Game
          handler.clearLevel();
          init();
          System.out.println("end ds");
+         
+         if (lives==0)
+         {
+             gameStatus=0;
+             lives=3;
+         }
+         
+
+         
+         
      }
      
      
