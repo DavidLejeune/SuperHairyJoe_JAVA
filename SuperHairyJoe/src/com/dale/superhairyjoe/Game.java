@@ -5,6 +5,7 @@ import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
 import com.dale.superhairyjoe.input.KeyInput;
+import com.dale.superhairyjoe.sounds.Sound;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -62,6 +63,8 @@ public class Game
   public static boolean showIntro = true;
   public static int introTime = 0;
   
+  public String introWav;
+  
   
 //  public static ArrayList<Birdshit> birdshit;
   
@@ -100,6 +103,8 @@ public class Game
       
 //    birdshit = new ArrayList<Birdshit>();  
       
+      
+    introWav = "cc-start.wav" ;
     cam = new Camera();
     
     sheet = new SpriteSheet("/spritesheet.png");
@@ -148,7 +153,7 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     if(gameStatus==0){
-        
+        Sound.play(introWav); 
     }
     if(gameStatus==2){
         
@@ -223,11 +228,8 @@ public class Game
     
      if(gameStatus==0){
         //g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Courier New", Font.BOLD , 25));
         g.drawString("Super Hairy Joe", 80,50);
-        g.drawImage(imageIntro, 10, 20, this);
-    
+        g.drawImage(imageIntro, (WIDTH - imageIntro.getWidth())  /2, (HEIGHT - imageIntro.getHeight())  /2, this);
    
     }   
     
