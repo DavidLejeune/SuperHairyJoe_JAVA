@@ -45,6 +45,7 @@ public class Game
   public static Sprite usedPowerUp;
   public static Camera cam;
   private BufferedImage image;
+  private BufferedImage imageIntro;
   
   
   public static Sprite coin;
@@ -56,6 +57,11 @@ public class Game
   public static boolean showDeathScreen = false;
   public static int deathScreenTime = 0;
   public static boolean startGame=false;
+  
+  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game 
+  public static boolean showIntro = true;
+  public static int introTime = 0;
+  
   
 //  public static ArrayList<Birdshit> birdshit;
   
@@ -123,6 +129,7 @@ public class Game
     for (int i = 0; i < seagull.length; i++) {
       seagull[i] = new Sprite(sheet, i + 1, 14);
     }
+    
     try
     {
       this.image = ImageIO.read(getClass().getResource("/level.png"));
@@ -132,7 +139,21 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-        handler.createLevel(this.image);
+    try
+    {
+      this.imageIntro = ImageIO.read(getClass().getResource("/SuperHairyJoe_logo.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    if(gameStatus==0){
+        
+    }
+    if(gameStatus==2){
+        
+    handler.createLevel(this.image);
+    }
   }
   
   public void run()
@@ -181,6 +202,11 @@ public class Game
   
   public void render()
   {
+      
+      
+      
+      
+      
     BufferStrategy bs = getBufferStrategy();
     if (bs == null)
     {
@@ -193,6 +219,21 @@ public class Game
     
     
     
+    
+    
+     if(gameStatus==0){
+        //g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Courier New", Font.BOLD , 25));
+        g.drawString("Super Hairy Joe", 80,50);
+        g.drawImage(imageIntro, 10, 20, this);
+    
+   
+    }   
+    
+    
+    
+    if(gameStatus==2){
     //Draw the score on the screen 
     //Must be before translate & handler.render , so i doesnt move with the camera
     g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
@@ -206,6 +247,18 @@ public class Game
     g.setColor(Color.WHITE);
     g.setFont(new Font("Courier", Font.BOLD , 25));
     g.drawString("x " + lives, 80,125);   
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     g.translate(cam.getX(), cam.getY());
     
@@ -215,27 +268,52 @@ public class Game
 
     bs.show();
 
-    
-    
-    
-//    for (int i = 0; i < birdshit.size(); i++)
-//      {
-//          birdshit.draw(g);
-//      }  
-    
-    
-    
-    
   }
   
   public void tick()
   {
     handler.tick();
     
+        //show the intro
+      if(showIntro) 
+     {
+         introTime++;
+         System.out.println(""+introTime);
+     }
+
+     if (introTime >=200)
+     {
+         gameStatus=2;
+         showIntro=false;
+         introTime=0;
+         
+         
+         handler.clearLevel();
+         init();
+         System.out.println("end intro");
+     }  
     
     
-    
-    
+     //deathscreen
+     if(showDeathScreen) 
+     {
+         deathScreenTime++;
+         
+     }
+     if (deathScreenTime >=180)
+     {
+         
+         System.out.println("dst " + deathScreenTime);
+         showDeathScreen = false;
+         deathScreenTime=0;
+         handler.clearLevel();
+         init();
+         System.out.println("end ds");
+     }
+     
+     
+     
+     
     
     for (GameObject gameObject : handler.gameObjects) {
       if ((gameObject instanceof Player))
@@ -254,28 +332,14 @@ public class Game
 //          }
 //      }
       
-     if(showDeathScreen) 
-     {
-         deathScreenTime++;
-         
-     }
-         
-        
 
+   
      
-     
-     if (deathScreenTime >=20000)
-     {
-         
-         System.out.println("dst " + deathScreenTime);
-         showDeathScreen = false;
-         deathScreenTime=0;
-         handler.clearLevel();
-         init();
-         System.out.println("end ds");
-     }
-     
+   
       
+     
+     
+     
     }
             
     
