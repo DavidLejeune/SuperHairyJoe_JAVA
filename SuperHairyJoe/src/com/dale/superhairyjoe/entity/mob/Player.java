@@ -159,6 +159,8 @@ public class Player
       {
         if (getBounds().intersects(gameObject.getBounds()))
         {
+            
+          Sound.play("power-up.wav"); 
           int tpX = getX();
           int tpY = getY();
           
