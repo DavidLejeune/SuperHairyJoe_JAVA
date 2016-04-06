@@ -207,7 +207,7 @@ public class Player
                 Sound.play("game_over.wav"); 
                 Game.gameStatus=0;
                 handler.clearLevel();
-                //Game.showIntro=true;
+                Game.showIntro=true;
             }
             else
             {

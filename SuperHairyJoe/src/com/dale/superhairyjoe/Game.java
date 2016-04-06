@@ -153,7 +153,10 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     if(gameStatus==0){
-        Sound.play(introWav); 
+        if (lives!=0)
+        {
+            Sound.play(introWav); 
+        }
     }
     if(gameStatus==2){
         
@@ -277,7 +280,7 @@ public class Game
     handler.tick();
     
         //show the intro
-      if(showIntro) 
+     if(showIntro) 
      {
          introTime++;
          System.out.println(""+introTime);
@@ -315,9 +318,8 @@ public class Game
          init();
          System.out.println("end ds");
          
-         if (lives==0)
+         if (lives==0 && gameStatus==0)
          {
-             gameStatus=0;
              lives=3;
          }
          
