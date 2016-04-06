@@ -5,6 +5,7 @@ import com.dale.superhairyjoe.entity.mob.Goomba;
 import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.entity.mob.Seagull;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
+import com.dale.superhairyjoe.tile.Coin;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
@@ -75,6 +76,9 @@ public class Handler
         }
         if ((red == 25) && (green == 25) && (blue == 25)) {
           addGameObject(new Seagull(x * 64, y * 64, 64, 64, this));
+        }
+        if ((red == 255) && (green == 255) && (blue == 0)) {
+          addGameObject(new Coin(x * 64, y * 64, 64, 64, this));
         }
       }
     }

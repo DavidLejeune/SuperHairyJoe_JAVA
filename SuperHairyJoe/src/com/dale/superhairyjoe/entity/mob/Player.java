@@ -7,6 +7,7 @@ import com.dale.superhairyjoe.entity.Entity.Direction;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.tile.Coin;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
@@ -140,7 +141,15 @@ public class Player
         }
       }  
       
-      
+      // Check if we are hitting a coin , if so score 'coins' + 1
+      if ((gameObject instanceof Coin))
+      {
+        if (getBounds().intersects(gameObject.getBounds()))
+        {
+          Game.coins ++ ;
+          gameObject.die();
+        }
+      }
       
       
       if ((gameObject instanceof Mushroom))

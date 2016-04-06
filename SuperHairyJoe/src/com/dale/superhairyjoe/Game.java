@@ -8,6 +8,7 @@ import com.dale.superhairyjoe.input.KeyInput;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
@@ -45,6 +46,9 @@ public class Game
   public static Camera cam;
   private BufferedImage image;
   
+  
+  public static Sprite coin;
+  public static int coins=0;
   
 //  public static ArrayList<Birdshit> birdshit;
   
@@ -97,6 +101,11 @@ public class Game
     seagull = new Sprite[8];
     powerUp = new Sprite(sheet, 4, 1);
     usedPowerUp = new Sprite(sheet, 5, 1);
+    
+    
+    coin = new Sprite(sheet,6,1);
+    
+    
     for (int i = 0; i < player.length; i++) {
       player[i] = new Sprite(sheet, i + 1, 16);
     }
@@ -172,6 +181,17 @@ public class Game
     Graphics g = bs.getDrawGraphics();
     g.setColor(Color.BLACK);
     g.fillRect(0, 0, getWidth(), getHeight());
+    
+    
+    
+    //Draw the score on the screen 
+    //Must be before translate & handler.render , so i doesnt move with the camera
+    g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
+    g.setColor(Color.WHITE);
+    g.setFont(new Font("Courier", Font.BOLD , 25));
+    g.drawString("x " + coins, 75,50);
+    
+    
     
     g.translate(cam.getX(), cam.getY());
     
