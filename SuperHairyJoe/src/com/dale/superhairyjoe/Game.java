@@ -552,7 +552,7 @@ public class Game
          System.out.println(""+nextLevelTime);
      }
 
-     if (nextLevelTime >=360)
+     if (nextLevelTime >=380)
      {
          
          gameStatus=2;

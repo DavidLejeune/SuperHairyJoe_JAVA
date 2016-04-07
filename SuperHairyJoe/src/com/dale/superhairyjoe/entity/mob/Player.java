@@ -233,6 +233,7 @@ public class Player
       else if ((gameObject instanceof Goomba)) {
         if (getBoundsBottom().intersects(((Goomba)gameObject).getBoundsTop())) {
           gameObject.die();
+          Sound.play("blargg.wav");
         } else if (getBounds().intersects(gameObject.getBounds())) {
           if (this.state == PlayerState.BIG)
           {
@@ -316,7 +317,7 @@ public class Player
                 Sound.play("lost_life.wav"); 
             }
                 Game.showDeathScreen = true;
-                
+             Game.coins=0;   
             killed=false;
     }
     
