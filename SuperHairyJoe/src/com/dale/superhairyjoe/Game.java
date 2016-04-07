@@ -358,14 +358,13 @@ public class Game
      if(gameStatus==0){
         if(lives==0)
         {
+            //gameover
             g.drawImage(imageGameOver, (WIDTH - imageGameOver.getWidth())  /2, (HEIGHT - imageGameOver.getHeight())  /2 , this);
+            levelItem=1;
         }
         else
         {
-            //if(!showDeathScreen) 
-            //{
                 g.drawImage(imageIntro, (WIDTH - imageIntro.getWidth())  /2, (HEIGHT - imageIntro.getHeight())  /2, this);
-            //}
         }
     }           
   
