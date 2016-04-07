@@ -44,9 +44,33 @@ public class Player
     if (this.y <= 0) {
       this.y = 0;
     }
-//    if (this.y + this.height >= Game.HEIGHT * 1) {
-//      this.y = (Game.HEIGHT * 1 - this.height);
-//    }
+    
+    
+    
+    //so the player doesnt keep falling
+    if (this.y + this.height >= 20000) {
+             die();
+            Game.lives--;
+            if(Game.lives==0)
+            {
+                
+                Sound.play("game_over.wav"); 
+                Game.gameStatus=0;
+                handler.clearLevel();
+                Game.showIntro=true;
+            }
+            else
+            {
+                
+                Sound.play("lost_life.wav"); 
+            }
+                Game.showDeathScreen = true;
+                 
+    }
+    
+    
+    
+    
     if (this.velX != 0) {
       this.animate = true;
     } else {
@@ -196,11 +220,6 @@ public class Player
           {
             die();
             Game.lives--;
-            
-            
-            
-            
-            
             if(Game.lives==0)
             {
                 

@@ -86,21 +86,16 @@ public class KeyInput
     {
         if(key==40)
         {
-
             Game.menuMoveDown = false;
-
         }
         if(key==38)
         {
-
             Game.menuMoveUp = false;
-
         }  
         if(key==KeyEvent.VK_ENTER)
         {
             System.out.println("enter");
             Game.menuChoose = false;
-
         }
     }
     

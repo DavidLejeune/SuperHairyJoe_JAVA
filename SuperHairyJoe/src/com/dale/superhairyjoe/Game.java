@@ -147,7 +147,7 @@ public class Game
     
     try
     {
-      this.image = ImageIO.read(getClass().getResource("/level.png"));
+      this.image = ImageIO.read(getClass().getResource("/level1.png"));
     }
     catch (IOException ex)
     {
@@ -220,7 +220,7 @@ public class Game
     }
     if(gameStatus==2){
         
-    handler.createLevel(this.image);
+        handler.createLevel(this.image);
     }
   }
   
