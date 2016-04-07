@@ -47,12 +47,13 @@ public class Game
   public static Camera cam;
   private BufferedImage image;
   private BufferedImage imageIntro;
+  private BufferedImage imageGameOver;
   
   
   public static Sprite coin;
   public static int coins=0;
   public static Sprite life;
-  public static int lives=1;
+  public static int lives=3;
   
   
   public static boolean showDeathScreen = false;
@@ -146,6 +147,17 @@ public class Game
     
     try
     {
+      this.imageGameOver = ImageIO.read(getClass().getResource("/SuperHairyJoe_gameover.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
+    
+    try
+    {
       this.imageIntro = ImageIO.read(getClass().getResource("/SuperHairyJoe_logo.png"));
     }
     catch (IOException ex)
@@ -231,10 +243,20 @@ public class Game
     
      if(gameStatus==0){
         //g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
-        g.drawString("Super Hairy Joe", 80,50);
-        g.drawImage(imageIntro, (WIDTH - imageIntro.getWidth())  /2, (HEIGHT - imageIntro.getHeight())  /2, this);
-   
-    }   
+         
+         
+        if(lives==0)
+        {
+            g.drawImage(imageGameOver, (WIDTH - imageGameOver.getWidth())  /2, (HEIGHT - imageGameOver.getHeight())  /2 , this);
+        }
+        else
+        {
+            //if(!showDeathScreen) 
+            //{
+                g.drawImage(imageIntro, (WIDTH - imageIntro.getWidth())  /2, (HEIGHT - imageIntro.getHeight())  /2, this);
+            //}
+        }
+    }           
     
     
     

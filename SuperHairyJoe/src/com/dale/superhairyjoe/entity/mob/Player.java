@@ -165,8 +165,8 @@ public class Player
           int tpX = getX();
           int tpY = getY();
           
-          this.width *= 1.1;
-          this.height *= 1.1;
+          this.width *= 2;
+          this.height *= 2;
           
           setX(tpX - this.width);
           setY(tpY - this.height);
