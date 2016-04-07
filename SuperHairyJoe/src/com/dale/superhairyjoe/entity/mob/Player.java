@@ -203,6 +203,7 @@ public class Player
         if (getBoundsLeft().intersects(gameObject.getBounds()))
         {
             //to next level
+            Sound.play("course_clear.wav"); 
             Game.showNextLevel = true;
             Game.gameStatus=4;
             Game.handler.clearLevel();

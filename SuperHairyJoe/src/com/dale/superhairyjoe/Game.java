@@ -436,10 +436,19 @@ public class Game
     }
     
     
+    
+    
+    
      
     // Credits
     if(gameStatus==4){
-        g.drawImage(imageNextLevel, (WIDTH - imageNextLevel.getWidth())  /2, (HEIGHT - imageNextLevel.getHeight())  /2 , this);   
+        g.drawImage(imageNextLevel, (WIDTH - imageNextLevel.getWidth())  /2, (HEIGHT - imageNextLevel.getHeight())  /2 , this);  
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Courier", Font.BOLD , 100));
+                g.drawString("Next level : " + (levelItem+1), (WIDTH /2) - (2*120),(HEIGHT /4)*2); 
+                g.setColor(Color.RED);
+                g.setFont(new Font("Comic", Font.BOLD , 100));
+                g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*120) -3 ,((HEIGHT /4)*2) +3);  
     }
     
     
@@ -533,7 +542,7 @@ public class Game
          System.out.println(""+nextLevelTime);
      }
 
-     if (nextLevelTime >=300)
+     if (nextLevelTime >=360)
      {
          
          gameStatus=2;
