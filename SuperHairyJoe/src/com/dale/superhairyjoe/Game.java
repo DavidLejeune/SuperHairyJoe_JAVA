@@ -48,6 +48,9 @@ public class Game
   private BufferedImage image;
   private BufferedImage imageIntro;
   private BufferedImage imageGameOver;
+  private BufferedImage imageMenu1;
+  private BufferedImage imageMenu2;
+  private BufferedImage imageMenu3;
   
   
   public static Sprite coin;
@@ -63,6 +66,11 @@ public class Game
   public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game 
   public static boolean showIntro = true;
   public static int introTime = 0;
+  
+  public static int menuItem = 1;
+  public static boolean menuMoveDown=false;
+  public static boolean menuMoveUp=false;
+  public static boolean menuChoose=false;
   
   public String introWav;
   
@@ -164,6 +172,36 @@ public class Game
     {
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
+    
+    try
+    {
+      this.imageMenu1 = ImageIO.read(getClass().getResource("/SuperHairyJoe_menu2.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    try
+    {
+      this.imageMenu2 = ImageIO.read(getClass().getResource("/SuperHairyJoe_menu3.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    try
+    {
+      this.imageMenu3 = ImageIO.read(getClass().getResource("/SuperHairyJoe_menu4.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
+    
     if(gameStatus==0){
         if (lives!=0)
         {
@@ -257,7 +295,32 @@ public class Game
             //}
         }
     }           
-    
+  
+     
+         if(gameStatus==1){
+
+            if(menuItem==1)
+            {
+                g.drawImage(imageMenu1, (WIDTH - imageMenu1.getWidth())  /2, (HEIGHT - imageMenu1.getHeight())  /2 , this);
+
+            }  
+
+            if(menuItem==2)
+            {
+                g.drawImage(imageMenu2, (WIDTH - imageMenu2.getWidth())  /2, (HEIGHT - imageMenu2.getHeight())  /2 , this);
+
+            }   
+
+            if(menuItem==3)
+            {
+                g.drawImage(imageMenu3, (WIDTH - imageMenu3.getWidth())  /2, (HEIGHT - imageMenu3.getHeight())  /2 , this);
+
+            }     
+        }
+       
+     
+     
+     
     
     
     if(gameStatus==2){
@@ -301,7 +364,7 @@ public class Game
   {
     handler.tick();
     
-        //show the intro
+     //show the intro
      if(showIntro) 
      {
          introTime++;
@@ -310,14 +373,15 @@ public class Game
 
      if (introTime >=300)
      {
-         gameStatus=2;
+         
+         gameStatus=1;
          showIntro=false;
          introTime=0;
          
          
          handler.clearLevel();
          System.out.println("end intro");
-         gameStatus=2;
+         gameStatus=1;
          init();
          
      }  
@@ -351,7 +415,19 @@ public class Game
      }
      
      
-     
+        
+      if (menuMoveDown)
+      {
+          countUp();
+      }
+      if (menuMoveUp)
+      {
+          countDown();
+      }
+      if (menuChoose)
+      {
+          chooseMenuItem();
+      }
      
     
     for (GameObject gameObject : handler.gameObjects) {
@@ -372,20 +448,42 @@ public class Game
 //      }
       
 
-   
-     
-   
-      
-     
-     
      
     }
-            
-    
-    
-    
+  
     
   }
+  
+  public void countUp()
+  {
+      if (menuMoveDown)
+      {
+        menuItem +=1;
+        menuMoveDown=false;
+        if (menuItem > 3) menuItem = 3;
+      }
+  }
+  
+  public void countDown()
+  {      
+      if (menuMoveUp)
+      {
+        menuItem -=1;
+        menuMoveUp=false;
+        if (menuItem <1) menuItem = 1;
+      }
+  } 
+  
+  public void chooseMenuItem()
+  {      
+      if (menuChoose)
+      {
+        menuChoose=false;
+        if (menuItem ==1) gameStatus = 2;
+        init();
+      }
+  } 
+  
   
   public Game()
   {

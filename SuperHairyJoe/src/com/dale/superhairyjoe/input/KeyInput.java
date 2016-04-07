@@ -14,6 +14,29 @@ public class KeyInput
   public void keyPressed(KeyEvent e)
   {
     int key = e.getKeyCode();
+    
+    
+    if(Game.gameStatus==1)
+    {
+        if(key==40)
+        {
+
+            Game.menuMoveDown = true;
+        }
+        if(key==38)
+        {
+
+            Game.menuMoveUp = true;
+
+        }
+        if(key==KeyEvent.VK_ENTER)
+        {
+            System.out.println("enter");
+            Game.menuChoose = true;
+
+        }
+    }
+    
     for (GameObject gameObject : Game.handler.gameObjects) {
       if ((gameObject instanceof Player))
       {
@@ -37,6 +60,8 @@ public class KeyInput
           break;
         case 40: 
           player.setvelY(5);
+            
+            
         }
       }
     }
@@ -45,6 +70,30 @@ public class KeyInput
   public void keyReleased(KeyEvent e)
   {
     int key = e.getKeyCode();
+    
+      if(Game.gameStatus==1)
+    {
+        if(key==40)
+        {
+
+            Game.menuMoveDown = false;
+
+        }
+        if(key==38)
+        {
+
+            Game.menuMoveUp = false;
+
+        }  
+        if(key==KeyEvent.VK_ENTER)
+        {
+            System.out.println("enter");
+            Game.menuChoose = false;
+
+        }
+    }
+    
+    
     for (GameObject gameObject : Game.handler.gameObjects) {
       if ((gameObject instanceof Player))
       {
