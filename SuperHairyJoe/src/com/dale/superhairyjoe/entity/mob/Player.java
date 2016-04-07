@@ -48,7 +48,7 @@ public class Player
     
     
     //so the player doesnt keep falling
-    if (this.y + this.height >= 20000) {
+    if (this.y + this.height >= 10000) {
              die();
             Game.lives--;
             if(Game.lives==0)

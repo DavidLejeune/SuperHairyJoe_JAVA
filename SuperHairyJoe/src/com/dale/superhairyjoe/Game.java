@@ -347,6 +347,20 @@ public class Game
         g.setColor(Color.WHITE);
         g.setFont(new Font("Courier", Font.BOLD , 25));
         g.drawString("x " + lives, 80,125);   
+        
+        
+               if(showDeathScreen) 
+            {
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Courier", Font.BOLD , 100));
+                g.drawString("You died", WIDTH /2 - (2*100),HEIGHT /2); 
+                g.setColor(Color.RED);
+                g.setFont(new Font("Courier", Font.BOLD , 100));
+                g.drawString("You died", (WIDTH /2) - (2*100) -3 ,(HEIGHT /2) +3); 
+            } 
+        
+        
+        
     }
     
      
