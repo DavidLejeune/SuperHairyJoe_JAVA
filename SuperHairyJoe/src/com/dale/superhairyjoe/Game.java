@@ -46,12 +46,15 @@ public class Game
   public static Sprite usedPowerUp;
   public static Camera cam;
   private BufferedImage image;
+  private BufferedImage imageLevel1;
+  private BufferedImage imageLevel2;
   private BufferedImage imageIntro;
   private BufferedImage imageGameOver;
   private BufferedImage imageMenu1;
   private BufferedImage imageMenu2;
   private BufferedImage imageMenu3;
   private BufferedImage imageCredits;
+  private BufferedImage imageLevels;
   
   
   public static Sprite coin;
@@ -64,7 +67,7 @@ public class Game
   public static int deathScreenTime = 0;
   public static boolean startGame=false;
   
-  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits
+  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits , 3=Levels
   public static boolean showIntro = true;
   public static int introTime = 0;
   
@@ -72,6 +75,13 @@ public class Game
   public static boolean menuMoveDown=false;
   public static boolean menuMoveUp=false;
   public static boolean menuChoose=false;
+  
+  public static int levelItem = 1;
+  public static boolean levelMoveDown=false;
+  public static boolean levelMoveUp=false;
+  public static boolean levelChoose=false;
+  
+  
   
   public String introWav;
   
@@ -147,7 +157,17 @@ public class Game
     
     try
     {
-      this.image = ImageIO.read(getClass().getResource("/level1.png"));
+      this.imageLevel1 = ImageIO.read(getClass().getResource("/level1.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
+    try
+    {
+      this.imageLevel2 = ImageIO.read(getClass().getResource("/level2.png"));
     }
     catch (IOException ex)
     {
@@ -210,6 +230,15 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     
+    try
+    {
+      this.imageLevels = ImageIO.read(getClass().getResource("/SuperHairyJoe_levels.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
     
     
     if(gameStatus==0){
@@ -220,7 +249,12 @@ public class Game
     }
     if(gameStatus==2){
         
-        handler.createLevel(this.image);
+        
+        if(levelItem==1) this.image = this.imageLevel1;
+        if(levelItem==2) this.image = this.imageLevel2;
+        
+        
+         handler.createLevel(this.image);
     }
   }
   
@@ -288,11 +322,8 @@ public class Game
     
     
     
-    
+    //intro
      if(gameStatus==0){
-        //g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
-         
-         
         if(lives==0)
         {
             g.drawImage(imageGameOver, (WIDTH - imageGameOver.getWidth())  /2, (HEIGHT - imageGameOver.getHeight())  /2 , this);
@@ -306,7 +337,7 @@ public class Game
         }
     }           
   
-     
+        //Menu
          if(gameStatus==1){
 
             if(menuItem==1)
@@ -332,7 +363,7 @@ public class Game
      
      
     
-    
+    //Playing the game
     if(gameStatus==2){
         //Draw the score on the screen 
         //Must be before translate & handler.render , so i doesnt move with the camera
@@ -363,7 +394,29 @@ public class Game
         
     }
     
+    
+    
+    
+    
+    // Credits
+    if(gameStatus==3){
+        g.drawImage(imageLevels, (WIDTH - imageLevels.getWidth())  /2, (HEIGHT - imageLevels.getHeight())  /2 , this); 
+        
+        
+        
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Courier", Font.BOLD , 100));
+                g.drawString("<<< " + levelItem + " >>>", (WIDTH /2) - (2*100),(HEIGHT /3)*2); 
+                g.setColor(Color.RED);
+                g.setFont(new Font("Courier", Font.BOLD , 100));
+                g.drawString("<<< " + levelItem + " >>>", (WIDTH /2) - (2*100) -3 ,((HEIGHT /3)*2) +3); 
+        
+        
+    }
+    
+    
      
+    // Credits
     if(gameStatus==38){
         g.drawImage(imageCredits, (WIDTH - imageCredits.getWidth())  /2, (HEIGHT - imageCredits.getHeight())  /2 , this);   
     }
@@ -444,7 +497,7 @@ public class Game
      }
      
      
-        
+      //updating Menu screen  
       if (menuMoveDown)
       {
           countUp();
@@ -456,6 +509,19 @@ public class Game
       if (menuChoose)
       {
           chooseMenuItem();
+      }
+      //updating Levels screen
+      if (levelMoveUp)
+      {
+          levelUp();
+      }
+      if (levelMoveDown)
+      {
+          levelDown();
+      }
+      if (levelChoose)
+      {
+          levelMenuItem();
       }
      
     
@@ -508,9 +574,46 @@ public class Game
       if (menuChoose)
       {
         menuChoose=false;
-        if (menuItem ==1) gameStatus = 2;
-        if (menuItem ==3) gameStatus = 38;
+        if (menuItem ==1) gameStatus = 2; //Play
+        if (menuItem ==2) gameStatus = 3; // Levels
+        if (menuItem ==3) gameStatus = 38; // Credits
         init();
+      }
+  } 
+  
+  public void levelDown()
+  {
+      if (levelMoveDown)
+      {
+        levelItem -=1;
+        levelMoveDown=false;
+        if (levelItem <1) levelItem = 1;
+      }
+  }
+  
+  public void levelUp()
+  {      
+      if (levelMoveUp)
+      {
+        levelItem +=1;
+        levelMoveUp=false;
+        if (levelItem >3) levelItem = 3;
+      }
+  } 
+  
+  public void levelMenuItem()
+  {      
+      if (levelChoose)
+      {
+          if(levelItem==1 || levelItem==2 )
+          {
+            levelChoose=false;
+            gameStatus=2;
+            //if (levelItem ==1) gameStatus = 2; //Play
+            //if (levelItem ==2) gameStatus = 3; // Levels
+            //if (levelItem ==3) gameStatus = 38; // Credits
+            init();
+          }
       }
   } 
   

@@ -37,7 +37,32 @@ public class KeyInput
         }
     }    
     
-    
+     if(Game.gameStatus==3)
+    {
+        if(key==37)
+        {
+
+            Game.levelMoveDown = true;
+        }
+        if(key==39)
+        {
+            System.out.println("right");
+
+            Game.levelMoveUp = true;
+
+        }
+        if(key==KeyEvent.VK_ENTER)
+        {
+            System.out.println("enter");
+            Game.levelChoose = true;
+
+        }
+        if(key==KeyEvent.VK_ESCAPE)
+        {
+            Game.gameStatus = 1;
+
+        }
+    }     
     
     if(Game.gameStatus==38)
     {
@@ -96,6 +121,28 @@ public class KeyInput
         {
             System.out.println("enter");
             Game.menuChoose = false;
+        }
+    }
+    
+      if(Game.gameStatus==3)
+    {
+        if(key==37)
+        {
+            Game.levelMoveDown = false;
+        }
+        if(key==39)
+        {
+            Game.levelMoveUp = false;
+        }  
+        if(key==KeyEvent.VK_ENTER)
+        {
+            System.out.println("enter");
+            Game.levelChoose = false;
+        }
+        if(key==KeyEvent.VK_ESCAPE)
+        {
+            Game.gameStatus = 1;
+
         }
     }
     
