@@ -1,5 +1,6 @@
 package com.dale.superhairyjoe;
 
+
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
@@ -23,6 +24,9 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+
+
+
 public class Game
   extends Canvas
   implements Runnable
@@ -38,6 +42,7 @@ public class Game
   public static Handler handler;
   public static SpriteSheet sheet;
   public static Sprite grass;
+  public static Sprite lava;
   public static Sprite[] player = new Sprite[8];
   public static Sprite mushroom;
   public static Sprite[] goomba;
@@ -145,6 +150,9 @@ public class Game
     life = new Sprite(sheet,1,16);
     
     
+    lava = new Sprite(sheet, 8, 1);
+    
+    
     for (int i = 0; i < player.length; i++) {
       player[i] = new Sprite(sheet, i + 1, 16);
     }
@@ -223,7 +231,7 @@ public class Game
     
     try
     {
-      this.imageCredits = ImageIO.read(getClass().getResource("/SuperHairyJoe_credits.png"));
+      this.imageCredits = ImageIO.read(getClass().getResource("/SuperHairyJoe_credits2.png"));
     }
     catch (IOException ex)
     {
@@ -407,7 +415,7 @@ public class Game
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Courier", Font.BOLD , 100));
                 g.drawString("<<< " + levelItem + " >>>", (WIDTH /2) - (2*100),(HEIGHT /3)*2); 
-                g.setColor(Color.RED);
+                g.setColor(Color.BLUE);
                 g.setFont(new Font("Courier", Font.BOLD , 100));
                 g.drawString("<<< " + levelItem + " >>>", (WIDTH /2) - (2*100) -3 ,((HEIGHT /3)*2) +3); 
         

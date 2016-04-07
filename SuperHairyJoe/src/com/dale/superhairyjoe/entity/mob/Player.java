@@ -10,6 +10,7 @@ import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Coin;
+import com.dale.superhairyjoe.tile.Lava;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
@@ -29,6 +30,8 @@ public class Player
   }
   
   private boolean animate = false;
+  private boolean killed=false;
+  private boolean sinking=false;
   
   public Player(int x, int y, int width, int height, Handler handler)
   {
@@ -50,21 +53,7 @@ public class Player
     //so the player doesnt keep falling
     if (this.y + this.height >= 10000) {
              die();
-            Game.lives--;
-            if(Game.lives==0)
-            {
-                
-                Sound.play("game_over.wav"); 
-                Game.gameStatus=0;
-                handler.clearLevel();
-                Game.showIntro=true;
-            }
-            else
-            {
-                
-                Sound.play("lost_life.wav"); 
-            }
-                Game.showDeathScreen = true;
+            killed=true;
                  
     }
     
@@ -178,7 +167,23 @@ public class Player
             Sound.play("coin.wav"); 
         }
       }
-      
+       
+      // Check if we are going in lava
+      if ((gameObject instanceof Lava))
+      {
+        if (getBounds().intersects(gameObject.getBounds()))
+        {
+            falling = false;
+            sinking=true;
+          
+        }
+        if (getBoundsTop().intersects(gameObject.getBounds()))
+        {
+            die();
+            killed=true;
+          
+        }
+      }     
       
       if ((gameObject instanceof Mushroom))
       {
@@ -219,23 +224,7 @@ public class Player
           else if (this.state == PlayerState.SMALL)
           {
             die();
-            Game.lives--;
-            if(Game.lives==0)
-            {
-                
-                Sound.play("game_over.wav"); 
-                Game.gameStatus=0;
-                handler.clearLevel();
-                Game.showIntro=true;
-            }
-            else
-            {
-                
-                Sound.play("lost_life.wav"); 
-            }
-                Game.showDeathScreen = true;
-            
-            
+            killed=true;
             
             
           }
@@ -257,6 +246,14 @@ public class Player
       this.gravity += 0.1D;
       setvelY((int)this.gravity);
     }
+    
+    if (this.sinking)
+    {
+      this.gravity += 0.9D;
+      setvelY((int)this.gravity);
+    }
+    
+    
     if (this.animate)
     {
       this.frameDelay += 1;
@@ -269,6 +266,30 @@ public class Player
         this.frameDelay = 0;
       }
     }
+    
+    if(killed)
+    {
+            Game.lives--;
+            if(Game.lives==0)
+            {
+                
+                Sound.play("game_over.wav"); 
+                Game.gameStatus=0;
+                handler.clearLevel();
+                Game.showIntro=true;
+            }
+            else
+            {
+                
+                Sound.play("lost_life.wav"); 
+            }
+                Game.showDeathScreen = true;
+                
+            killed=false;
+    }
+    
+    
+    
   }
   
   public void render(Graphics g)
