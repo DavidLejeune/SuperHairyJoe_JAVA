@@ -35,6 +35,17 @@ public class KeyInput
             Game.menuChoose = true;
 
         }
+    }    
+    
+    
+    
+    if(Game.gameStatus==38)
+    {
+        if(key==KeyEvent.VK_ESCAPE)
+        {
+            Game.gameStatus = 1;
+
+        }
     }
     
     for (GameObject gameObject : Game.handler.gameObjects) {
@@ -93,7 +104,16 @@ public class KeyInput
         }
     }
     
-    
+       if(Game.gameStatus==38)
+    {
+        if(key==KeyEvent.VK_ESCAPE)
+        {
+            Game.gameStatus = 1;
+
+        }
+    }
+       
+       
     for (GameObject gameObject : Game.handler.gameObjects) {
       if ((gameObject instanceof Player))
       {

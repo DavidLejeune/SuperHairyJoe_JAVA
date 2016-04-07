@@ -51,6 +51,7 @@ public class Game
   private BufferedImage imageMenu1;
   private BufferedImage imageMenu2;
   private BufferedImage imageMenu3;
+  private BufferedImage imageCredits;
   
   
   public static Sprite coin;
@@ -63,7 +64,7 @@ public class Game
   public static int deathScreenTime = 0;
   public static boolean startGame=false;
   
-  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game 
+  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits
   public static boolean showIntro = true;
   public static int introTime = 0;
   
@@ -200,6 +201,15 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     
+    try
+    {
+      this.imageCredits = ImageIO.read(getClass().getResource("/SuperHairyJoe_credits.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
     
     
     if(gameStatus==0){
@@ -324,19 +334,24 @@ public class Game
     
     
     if(gameStatus==2){
-    //Draw the score on the screen 
-    //Must be before translate & handler.render , so i doesnt move with the camera
-    g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
-    g.setColor(Color.WHITE);
-    g.setFont(new Font("Courier", Font.BOLD , 25));
-    g.drawString("x " + coins, 80,50);
+        //Draw the score on the screen 
+        //Must be before translate & handler.render , so i doesnt move with the camera
+        g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Courier", Font.BOLD , 25));
+        g.drawString("x " + coins, 80,50);
+
+         //Draw the nr of lives on the screen
+        //Must be before translate & handler.render , so i doesnt move with the camera
+        g.drawImage(Game.life.getBufferedImage(),5,80, 75,75,null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Courier", Font.BOLD , 25));
+        g.drawString("x " + lives, 80,125);   
+    }
     
-     //Draw the nr of lives on the screen
-    //Must be before translate & handler.render , so i doesnt move with the camera
-    g.drawImage(Game.life.getBufferedImage(),5,80, 75,75,null);
-    g.setColor(Color.WHITE);
-    g.setFont(new Font("Courier", Font.BOLD , 25));
-    g.drawString("x " + lives, 80,125);   
+     
+    if(gameStatus==38){
+        g.drawImage(imageCredits, (WIDTH - imageCredits.getWidth())  /2, (HEIGHT - imageCredits.getHeight())  /2 , this);   
     }
     
     
@@ -480,6 +495,7 @@ public class Game
       {
         menuChoose=false;
         if (menuItem ==1) gameStatus = 2;
+        if (menuItem ==3) gameStatus = 38;
         init();
       }
   } 
