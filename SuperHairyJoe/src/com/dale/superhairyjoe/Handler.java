@@ -7,6 +7,7 @@ import com.dale.superhairyjoe.entity.mob.Seagull;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
 import com.dale.superhairyjoe.tile.Coin;
 import com.dale.superhairyjoe.tile.Lava;
+import com.dale.superhairyjoe.tile.Portal;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
@@ -83,6 +84,9 @@ public class Handler
         }
         if ((red == 66) && (green == 66) && (blue == 66)) {
           addGameObject(new Lava(x * 64, y * 64, 64, 64, this));
+        }
+        if ((red == 0) && (green == 100) && (blue == 255)) {
+          addGameObject(new Portal(x * 64, y * 64, 64, 64, this));
         }
       }
     }

@@ -43,6 +43,7 @@ public class Game
   public static SpriteSheet sheet;
   public static Sprite grass;
   public static Sprite lava;
+  public static Sprite portal;
   public static Sprite[] player = new Sprite[8];
   public static Sprite mushroom;
   public static Sprite[] goomba;
@@ -60,6 +61,7 @@ public class Game
   private BufferedImage imageMenu3;
   private BufferedImage imageCredits;
   private BufferedImage imageLevels;
+  private BufferedImage imageNextLevel;
   
   
   public static Sprite coin;
@@ -72,9 +74,11 @@ public class Game
   public static int deathScreenTime = 0;
   public static boolean startGame=false;
   
-  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits , 3=Levels
+  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits , 3=Levels , 4 = Next Level
   public static boolean showIntro = true;
   public static int introTime = 0;
+  public static boolean showNextLevel = false;
+  public static int nextLevelTime = 0;
   
   public static int menuItem = 1;
   public static boolean menuMoveDown=false;
@@ -150,6 +154,7 @@ public class Game
     life = new Sprite(sheet,1,16);
     
     
+    portal = new Sprite(sheet, 7, 1);
     lava = new Sprite(sheet, 8, 1);
     
     
@@ -241,6 +246,14 @@ public class Game
     try
     {
       this.imageLevels = ImageIO.read(getClass().getResource("/SuperHairyJoe_levels.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    try
+    {
+      this.imageNextLevel = ImageIO.read(getClass().getResource("/SuperHairyJoe_nextlevel.png"));
     }
     catch (IOException ex)
     {
@@ -425,6 +438,13 @@ public class Game
     
      
     // Credits
+    if(gameStatus==4){
+        g.drawImage(imageNextLevel, (WIDTH - imageNextLevel.getWidth())  /2, (HEIGHT - imageNextLevel.getHeight())  /2 , this);   
+    }
+    
+    
+     
+    // Credits
     if(gameStatus==38){
         g.drawImage(imageCredits, (WIDTH - imageCredits.getWidth())  /2, (HEIGHT - imageCredits.getHeight())  /2 , this);   
     }
@@ -453,7 +473,7 @@ public class Game
   public void tick()
   {
     handler.tick();
-    
+    System.out.println("gs "+gameStatus);
      //show the intro
      if(showIntro) 
      {
@@ -503,6 +523,32 @@ public class Game
          
          
      }
+ 
+     
+     
+          //show next level
+     if(showNextLevel) 
+     {
+         nextLevelTime++;
+         System.out.println(""+nextLevelTime);
+     }
+
+     if (nextLevelTime >=300)
+     {
+         
+         gameStatus=2;
+         showNextLevel=false;
+         handler.clearLevel();
+         nextLevelTime=0;
+         
+         
+         handler.clearLevel();
+         System.out.println("end nxt");
+         levelMoveUp=true;
+         levelChoose=true;
+         init();
+         
+     }  
      
      
       //updating Menu screen  

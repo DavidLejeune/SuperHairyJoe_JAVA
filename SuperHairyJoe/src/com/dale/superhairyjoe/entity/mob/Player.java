@@ -11,6 +11,7 @@ import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Coin;
 import com.dale.superhairyjoe.tile.Lava;
+import com.dale.superhairyjoe.tile.Portal;
 import com.dale.superhairyjoe.tile.PowerUpBlock;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
@@ -32,6 +33,7 @@ public class Player
   private boolean animate = false;
   private boolean killed=false;
   private boolean sinking=false;
+  private boolean sliding=false;
   
   public Player(int x, int y, int width, int height, Handler handler)
   {
@@ -173,6 +175,7 @@ public class Player
       {
         if (getBounds().intersects(gameObject.getBounds()))
         {
+            
             falling = false;
             sinking=true;
           
@@ -183,7 +186,28 @@ public class Player
             killed=true;
           
         }
-      }     
+      }   
+      
+      
+      
+            // Check if we are going in lava
+      if ((gameObject instanceof Portal))
+      {
+        if (getBounds().intersects(gameObject.getBounds()))
+        {
+            
+            falling = false;
+            sliding=true;
+          
+        }
+        if (getBoundsLeft().intersects(gameObject.getBounds()))
+        {
+            //to next level
+            Game.showNextLevel = true;
+            Game.gameStatus=4;
+            Game.handler.clearLevel();
+        }
+      }   
       
       if ((gameObject instanceof Mushroom))
       {
@@ -253,6 +277,13 @@ public class Player
       setvelY((int)this.gravity);
     }
     
+    
+    if (this.sliding)
+    {
+      //this.velX +=0.9D;
+      //this.gravity += 0.9D;
+      //setvelX((int)this.velX);
+    }
     
     if (this.animate)
     {
