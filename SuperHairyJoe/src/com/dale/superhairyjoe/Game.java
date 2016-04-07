@@ -271,12 +271,23 @@ public class Game
     if(gameStatus==2){
         
         
+            Sound.play("pause.wav"); 
         if(levelItem==1) this.image = this.imageLevel1;
         if(levelItem==2) this.image = this.imageLevel2;
         
         
          handler.createLevel(this.image);
     }
+    
+      if(gameStatus==38){
+        
+        Sound.play("credits.wav"); 
+    }  
+    
+            
+    
+    
+    
   }
   
   public void run()
@@ -444,11 +455,11 @@ public class Game
     if(gameStatus==4){
         g.drawImage(imageNextLevel, (WIDTH - imageNextLevel.getWidth())  /2, (HEIGHT - imageNextLevel.getHeight())  /2 , this);  
                 g.setColor(Color.WHITE);
-                g.setFont(new Font("Courier", Font.BOLD , 100));
-                g.drawString("Next level : " + (levelItem+1), (WIDTH /2) - (2*120),(HEIGHT /4)*2); 
+                g.setFont(new Font("Comic", Font.BOLD , 100));
+                g.drawString("Next level : " + (levelItem+1), (WIDTH /2) - (2*125),(HEIGHT /4)*2); 
                 g.setColor(Color.RED);
                 g.setFont(new Font("Comic", Font.BOLD , 100));
-                g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*120) -3 ,((HEIGHT /4)*2) +3);  
+                g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*125) -3 ,((HEIGHT /4)*2) +3);  
     }
     
     
@@ -482,7 +493,6 @@ public class Game
   public void tick()
   {
     handler.tick();
-    System.out.println("gs "+gameStatus);
      //show the intro
      if(showIntro) 
      {
@@ -639,7 +649,11 @@ public class Game
         menuChoose=false;
         if (menuItem ==1) gameStatus = 2; //Play
         if (menuItem ==2) gameStatus = 3; // Levels
-        if (menuItem ==3) gameStatus = 38; // Credits
+        if (menuItem ==3) // Credits
+        {
+            gameStatus = 38;
+            
+        } 
         init();
       }
   } 
