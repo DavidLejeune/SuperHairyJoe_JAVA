@@ -54,6 +54,7 @@ public class Game
   private BufferedImage image;
   private BufferedImage imageLevel1;
   private BufferedImage imageLevel2;
+  private BufferedImage imageLevel3;
   private BufferedImage imageIntro;
   private BufferedImage imageGameOver;
   private BufferedImage imageMenu1;
@@ -62,6 +63,7 @@ public class Game
   private BufferedImage imageCredits;
   private BufferedImage imageLevels;
   private BufferedImage imageNextLevel;
+  private BufferedImage imageGameWon;
   
   
   public static Sprite coin;
@@ -74,11 +76,13 @@ public class Game
   public static int deathScreenTime = 0;
   public static boolean startGame=false;
   
-  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits , 3=Levels , 4 = Next Level
+  public static int gameStatus=0; // 0 = Intro , 1 = Menu , 2 = Game , 38 = credits , 3=Levels , 4 = Next Level , 5= Game won
   public static boolean showIntro = true;
   public static int introTime = 0;
   public static boolean showNextLevel = false;
   public static int nextLevelTime = 0;
+  public static boolean showWon = false;
+  public static int wonTime = 0;
   
   public static int menuItem = 1;
   public static boolean menuMoveDown=false;
@@ -189,6 +193,14 @@ public class Game
     
     try
     {
+      this.imageLevel3 = ImageIO.read(getClass().getResource("/level3.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    try
+    {
       this.imageGameOver = ImageIO.read(getClass().getResource("/SuperHairyJoe_gameover.png"));
     }
     catch (IOException ex)
@@ -261,6 +273,15 @@ public class Game
     }
     
     
+    try
+    {
+      this.imageGameWon = ImageIO.read(getClass().getResource("/SuperHairyJoe_gamewon.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
     
     if(gameStatus==0){
         if (lives!=0)
@@ -274,6 +295,7 @@ public class Game
             Sound.play("pause.wav"); 
         if(levelItem==1) this.image = this.imageLevel1;
         if(levelItem==2) this.image = this.imageLevel2;
+        if(levelItem==3) this.image = this.imageLevel3;
         
         
          handler.createLevel(this.image);
@@ -450,7 +472,7 @@ public class Game
     
     
      
-    // Credits
+    // next level
     if(gameStatus==4){
         g.drawImage(imageNextLevel, (WIDTH - imageNextLevel.getWidth())  /2, (HEIGHT - imageNextLevel.getHeight())  /2 , this);  
                 g.setColor(Color.WHITE);
@@ -459,6 +481,13 @@ public class Game
                 g.setColor(Color.RED);
                 g.setFont(new Font("Comic", Font.BOLD , 100));
                 g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*125) -3 ,((HEIGHT /4)*2) +3);  
+    }
+    
+       
+    // game won
+    if(gameStatus==5){
+        g.drawImage(imageGameWon, (WIDTH - imageGameWon.getWidth())  /2, (HEIGHT - imageGameWon.getHeight())  /2 , this);  
+                  
     }
     
     
@@ -551,7 +580,7 @@ public class Game
          System.out.println(""+nextLevelTime);
      }
 
-     if (nextLevelTime >=380)
+     if (nextLevelTime >=260)
      {
          
          gameStatus=2;
@@ -567,6 +596,34 @@ public class Game
          init();
          
      }  
+     
+     
+          //show the intro
+     if(showWon) 
+     {
+         wonTime++;
+         System.out.println(""+wonTime);
+     }
+
+     if (wonTime >=380)
+     {
+         
+         gameStatus=1;
+         showWon=false;
+         wonTime=0;
+         
+         
+         handler.clearLevel();
+         System.out.println("end won");
+         gameStatus=1;
+         levelItem=1;
+         init();
+         
+     }  
+  
+     
+     
+     
      
      
       //updating Menu screen  
@@ -681,7 +738,7 @@ public class Game
   {      
       if (levelChoose)
       {
-          if(levelItem==1 || levelItem==2 )
+          if(levelItem==1 || levelItem==2 || levelItem==3 )
           {
             levelChoose=false;
             gameStatus=2;

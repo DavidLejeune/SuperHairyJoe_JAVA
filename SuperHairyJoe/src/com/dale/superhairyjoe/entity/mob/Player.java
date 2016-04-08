@@ -202,11 +202,24 @@ public class Player
         }
         if (getBoundsLeft().intersects(gameObject.getBounds()))
         {
-            //to next level
-            Sound.play("course_clear.wav"); 
-            Game.showNextLevel = true;
-            Game.gameStatus=4;
-            Game.handler.clearLevel();
+            if(Game.levelItem==3)
+            {
+                
+                //to next level
+                Sound.play("course_clear.wav"); 
+                Game.showWon = true;
+                Game.gameStatus=5;
+                Game.handler.clearLevel();
+            }
+            else
+            {
+                
+                //to next level
+                Sound.play("course_clear2.wav"); 
+                Game.showNextLevel = true;
+                Game.gameStatus=4;
+                Game.handler.clearLevel();
+            }
         }
       }   
       
