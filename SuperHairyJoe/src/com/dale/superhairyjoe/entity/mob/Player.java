@@ -202,7 +202,7 @@ public class Player
         }
         if (getBoundsLeft().intersects(gameObject.getBounds()))
         {
-            if(Game.levelItem==3)
+            if(Game.levelItem==4)
             {
                 
                 //to next level

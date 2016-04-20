@@ -55,6 +55,7 @@ public class Game
   private BufferedImage imageLevel1;
   private BufferedImage imageLevel2;
   private BufferedImage imageLevel3;
+  private BufferedImage imageLevel4;
   private BufferedImage imageIntro;
   private BufferedImage imageGameOver;
   private BufferedImage imageMenu1;
@@ -64,12 +65,14 @@ public class Game
   private BufferedImage imageLevels;
   private BufferedImage imageNextLevel;
   private BufferedImage imageGameWon;
+  private BufferedImage background;
   
   
   public static Sprite coin;
   public static int coins=0;
   public static Sprite life;
   public static int lives=3;
+  public static int levels=4;
   
   
   public static boolean showDeathScreen = false;
@@ -199,6 +202,18 @@ public class Game
     {
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
+    try
+    {
+      this.imageLevel4 = ImageIO.read(getClass().getResource("/level4.png"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
+    
     try
     {
       this.imageGameOver = ImageIO.read(getClass().getResource("/SuperHairyJoe_gameover.png"));
@@ -282,6 +297,15 @@ public class Game
       Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
     }
     
+    try
+    {
+      this.background = ImageIO.read(getClass().getResource("/vives.PNG"));
+    }
+    catch (IOException ex)
+    {
+      Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
     
     if(gameStatus==0){
         if (lives!=0)
@@ -296,6 +320,7 @@ public class Game
         if(levelItem==1) this.image = this.imageLevel1;
         if(levelItem==2) this.image = this.imageLevel2;
         if(levelItem==3) this.image = this.imageLevel3;
+        if(levelItem==4) this.image = this.imageLevel4;
         
         
          handler.createLevel(this.image);
@@ -418,6 +443,11 @@ public class Game
     
     //Playing the game
     if(gameStatus==2){
+        
+        
+        g.drawImage(background,0,0,getWidth(),getHeight(),null);
+        
+        
         //Draw the score on the screen 
         //Must be before translate & handler.render , so i doesnt move with the camera
         g.drawImage(Game.coin.getBufferedImage(),5,5, 75,75,null);
@@ -434,14 +464,17 @@ public class Game
         
         
                if(showDeathScreen) 
-            {
-                g.setColor(Color.WHITE);
-                g.setFont(new Font("Courier", Font.BOLD , 100));
-                g.drawString("You died", WIDTH /2 - (2*100),HEIGHT /2); 
-                g.setColor(Color.RED);
-                g.setFont(new Font("Courier", Font.BOLD , 100));
-                g.drawString("You died", (WIDTH /2) - (2*100) -3 ,(HEIGHT /2) +3); 
-            } 
+                {
+                    g.setColor(Color.WHITE);
+                    g.setFont(new Font("Courier", Font.BOLD , 100));
+                    g.drawString("You died", WIDTH /2 - (2*100),HEIGHT /2); 
+                    g.setColor(Color.RED);
+                    g.setFont(new Font("Courier", Font.BOLD , 100));
+                    g.drawString("You died", (WIDTH /2) - (2*100) -3 ,(HEIGHT /2) +3); 
+                } 
+               else
+               {
+               }
         
         
         
@@ -730,7 +763,7 @@ public class Game
       {
         levelItem +=1;
         levelMoveUp=false;
-        if (levelItem >3) levelItem = 3;
+        if (levelItem >levels) levelItem = levels;
       }
   } 
   
@@ -738,7 +771,7 @@ public class Game
   {      
       if (levelChoose)
       {
-          if(levelItem==1 || levelItem==2 || levelItem==3 )
+          if(levelItem>0 & levelItem<= levels )
           {
             levelChoose=false;
             gameStatus=2;
