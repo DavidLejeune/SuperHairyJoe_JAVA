@@ -4,7 +4,9 @@ package com.dale.superhairyjoe;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.mob.Player;
 import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.gfx.SpriteBig;
 import com.dale.superhairyjoe.gfx.SpriteSheet;
+import com.dale.superhairyjoe.gfx.SpriteSheetBig;
 import com.dale.superhairyjoe.input.KeyInput;
 import com.dale.superhairyjoe.sounds.Sound;
 import java.awt.Canvas;
@@ -41,10 +43,11 @@ public class Game
   public boolean running = false;
   public static Handler handler;
   public static SpriteSheet sheet;
+  public static SpriteSheetBig sheetbig;
   public static Sprite grass;
   public static Sprite lava;
   public static Sprite portal;
-  public static Sprite[] player = new Sprite[8];
+  public static SpriteBig[] player = new SpriteBig[12];
   public static Sprite mushroom;
   public static Sprite[] goomba;
   public static Sprite[] seagull;
@@ -144,12 +147,13 @@ public class Game
     cam = new Camera();
     
     sheet = new SpriteSheet("/spritesheet.png");
+    sheetbig = new SpriteSheetBig("/spritesheetbig.png");
     handler = new Handler(cam);
     
     addKeyListener(new KeyInput());
     
     grass = new Sprite(sheet, 2, 1);
-    player = new Sprite[8];
+    player = new SpriteBig[12];
     mushroom = new Sprite(sheet, 3, 1);
     goomba = new Sprite[8];
     seagull = new Sprite[8];
@@ -166,7 +170,7 @@ public class Game
     
     
     for (int i = 0; i < player.length; i++) {
-      player[i] = new Sprite(sheet, i + 1, 16);
+      player[i] = new SpriteBig(sheetbig, i + 1, 16);
     }
     for (int i = 0; i < goomba.length; i++) {
       goomba[i] = new Sprite(sheet, i + 1, 15);
@@ -444,8 +448,7 @@ public class Game
     //Playing the game
     if(gameStatus==2){
         
-        
-        g.drawImage(background,0,0,getWidth(),getHeight(),null);
+        if(levelItem==4) g.drawImage(background,0,0,getWidth(),getHeight(),null);
         
         
         //Draw the score on the screen 
