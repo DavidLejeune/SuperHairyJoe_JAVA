@@ -516,7 +516,23 @@ public class Game
                 g.drawString("Next level : " + (levelItem+1), (WIDTH /2) - (2*125),(HEIGHT /4)*2); 
                 g.setColor(Color.RED);
                 g.setFont(new Font("Comic", Font.BOLD , 100));
-                g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*125) -3 ,((HEIGHT /4)*2) +3);  
+                g.drawString("Next level : " + (levelItem+1) + "", (WIDTH /2) - (2*125) -3 ,((HEIGHT /4)*2) +3); 
+                if(levelItem+1==4)
+                {
+                    
+                    g.setColor(Color.WHITE);
+                    g.setFont(new Font("Comic", Font.BOLD , 100));
+                    g.drawString("Trippy Level", (WIDTH /2) - (2*125),((HEIGHT /4)*2)+100); 
+                    g.setColor(Color.ORANGE);
+                    g.setFont(new Font("Comic", Font.BOLD , 100));
+                    g.drawString("Trippy Level", (WIDTH /2) - (2*125) -3 ,((HEIGHT /4)*2) +103); 
+                    g.setColor(Color.GREEN);
+                    g.setFont(new Font("Comic", Font.BOLD , 40));
+                    g.drawString("by Dylan Lejeune", (WIDTH /2) - (2*45),((HEIGHT /4)*2)+180); 
+                    g.setColor(Color.BLUE);
+                    g.setFont(new Font("Comic", Font.BOLD , 40));
+                    g.drawString("by Dylan Lejeune", (WIDTH /2) - (2*45) -3 ,((HEIGHT /4)*2) +183); 
+                }
     }
     
        
