@@ -1,3 +1,10 @@
 SuperHairyJoe/build/*
 SuperHairyJoe/dist/*
-SuperHairyJoe/nbproject/*
+SuperHairyJoe/nbproject/private/
+
+SuperHairyJoe/nbbuild/
+SuperHairyJoe/nbdist/
+SuperHairyJoe/nbactions.xml
+SuperHairyJoe/nb-configuration.xml
+
+
