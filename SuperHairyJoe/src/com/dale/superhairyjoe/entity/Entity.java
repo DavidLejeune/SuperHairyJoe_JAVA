@@ -17,7 +17,7 @@ public abstract class Entity
   
   public boolean jumping = false;
   public boolean falling = true;
-  protected Direction direction;
+  public Direction direction;
   protected int speed = 1;
   public int frame = 0;
   public int frameDelay = 0;
