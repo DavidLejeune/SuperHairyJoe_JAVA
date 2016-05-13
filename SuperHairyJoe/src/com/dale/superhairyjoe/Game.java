@@ -27,7 +27,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 
-
+/**
+ *
+ * @author David
+ */
 
 public class Game
   extends Canvas
