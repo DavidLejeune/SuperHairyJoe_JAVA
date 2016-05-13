@@ -47,7 +47,7 @@ public class Game
   public static Sprite grass;
   public static Sprite lava;
   public static Sprite portal;
-  public static SpriteBig[] player = new SpriteBig[12];
+  public static SpriteBig[] player = new SpriteBig[14];
   public static Sprite mushroom;
   public static Sprite[] goomba;
   public static Sprite[] seagull;
@@ -153,7 +153,7 @@ public class Game
     addKeyListener(new KeyInput());
     
     grass = new Sprite(sheet, 2, 1);
-    player = new SpriteBig[12];
+    player = new SpriteBig[14];
     mushroom = new Sprite(sheet, 3, 1);
     goomba = new Sprite[8];
     seagull = new Sprite[8];
@@ -170,7 +170,7 @@ public class Game
     
     
     for (int i = 0; i < player.length; i++) {
-      player[i] = new SpriteBig(sheetbig, i + 1, 16);
+      player[i] = new SpriteBig(sheetbig, i + 1, 13);
     }
     for (int i = 0; i < goomba.length; i++) {
       goomba[i] = new Sprite(sheet, i + 1, 15);
