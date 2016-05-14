@@ -76,7 +76,8 @@ public class KeyInput
         }
     }
     
-    
+           if(Game.gameStatus==2)
+    {
     for (GameObject gameObject : Game.handler.gameObjects) {
       if ((gameObject instanceof Player))
       {
@@ -114,6 +115,7 @@ public class KeyInput
             
         }
       }
+    }
     }
   }
   

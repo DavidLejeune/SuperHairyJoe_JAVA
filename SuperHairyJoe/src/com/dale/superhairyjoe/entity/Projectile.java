@@ -28,34 +28,25 @@ public class Projectile extends Entity {
     public void tick() {
 
         super.tick();
-<<<<<<< HEAD
+
         
         for (GameObject gameObject : this.handler.getNearObjects(this))
-    {
-      if (!gameObject.solid) {
-        break;
-      }
-      if ((gameObject instanceof Wall))
-      {
-        // this enemy just needs to turn when it hits a wall  
-        if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
-          die();
-          gameObject.die();
-=======
-
-        for (GameObject gameObject : this.handler.getNearObjects(this)) {
+        {
             if (!gameObject.solid) {
-                break;
+              break;
             }
-            if ((gameObject instanceof Wall)) {
+            if ((gameObject instanceof Wall))
+            {
+              // this enemy just needs to turn when it hits a wall  
+              if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
+                die();
+                gameObject.die();
 
-                if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
-                    die();
-                }
-            }
->>>>>>> 857dedc761f9a46f230dfaf99f80f64530e882c5
+
+              }
+
         }
 
+        }
     }
-
 }

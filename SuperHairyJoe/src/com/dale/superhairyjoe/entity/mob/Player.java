@@ -367,11 +367,9 @@ public class Player
   
   public void render(Graphics g)
   {
-<<<<<<< HEAD
+
     int offset = this.direction == Entity.Direction.LEFT ? 0 : 8;
-=======
-    int offset = this.direction == Entity.Direction.RIGHT ? 0 : 7;
->>>>>>> 857dedc761f9a46f230dfaf99f80f64530e882c5
+
     g.drawImage(Game.player[(this.frame + offset)].getBufferedImage(), this.x, this.y, this.width, this.height, null);
   }
   
