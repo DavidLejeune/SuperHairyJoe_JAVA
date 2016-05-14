@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dale.superhairyjoe.entity;
+package com.dale.superhairyjoe.entity.weapons;
 
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
+import com.dale.superhairyjoe.entity.GameObject;
+import com.dale.superhairyjoe.entity.Projectile;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
@@ -14,17 +16,30 @@ import java.awt.Graphics;
  *
  * @author Milan
  */
-public class Projectile extends Entity {
+public class BirdPoop
+extends Projectile
+{
+    
+    public BirdPoop(int x, int y, int width, int height, Handler handler, Direction direction) {
+        super(x, y, width, height, handler, direction);
+        
+        switch (direction) {
 
-    public Projectile(int x, int y, int width, int height, Handler handler, Direction direction) {
-        super(x, y, width, height, handler);
-
+            case LEFT:
+                setvelX(4);
+                setvelY(8);
+                break;
+            case RIGHT:
+                setvelX(-4);
+                setvelY(8);
+                break;
         }
-
-    @Override
-    public void render(Graphics g) {
     }
-
+    
+    public void render(Graphics g) {
+        g.drawImage(Game.mushroom.getBufferedImage(), this.x, this.y, this.width, this.height, null);
+    }
+    
     public void tick() {
 
         super.tick();
@@ -42,5 +57,5 @@ public class Projectile extends Entity {
         }
 
     }
-
+    
 }

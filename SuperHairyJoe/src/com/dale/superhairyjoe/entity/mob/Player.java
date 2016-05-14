@@ -7,6 +7,7 @@ import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.Entity.Direction;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
+import com.dale.superhairyjoe.entity.weapons.BirdPoop;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Coin;
@@ -241,6 +242,32 @@ public class Player
             this.state = PlayerState.BIG;
           }
           gameObject.die();
+        }
+      }
+      
+      if ((gameObject instanceof BirdPoop))
+      {
+      if (getBounds().intersects(gameObject.getBounds())) {
+          if (this.state == PlayerState.BIG)
+          {
+          Sound.play("power-down.wav"); 
+            this.state = PlayerState.SMALL;
+            this.width /= 2;
+            this.height /= 2;
+            this.x += this.width;
+            this.y += this.height;
+            //remove the poop after hit, else the level gets real nasty
+            
+            gameObject.die();
+          }
+          else if (this.state == PlayerState.SMALL)
+          {
+              //remove the player and player dies
+            die();
+            killed=true;
+            
+            
+          }
         }
       }
       else if ((gameObject instanceof Goomba)) {
