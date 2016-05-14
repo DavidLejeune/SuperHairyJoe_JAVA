@@ -14,28 +14,21 @@ import java.awt.Graphics;
  *
  * @author Milan
  */
-public class Projectile extends Entity{
+public class Projectile extends Entity {
 
     public Projectile(int x, int y, int width, int height, Handler handler, Direction direction) {
         super(x, y, width, height, handler);
-        
-        switch(direction){
-        
-            case LEFT: setvelX(-8);
-                break;
-            case RIGHT: setvelX(8);
-                break;
+
         }
-    }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Game.coin.getBufferedImage(), this.x, this.y, this.width, this.height, null);
     }
-    
+
     public void tick() {
-    
+
         super.tick();
+<<<<<<< HEAD
         
         for (GameObject gameObject : this.handler.getNearObjects(this))
     {
@@ -48,18 +41,21 @@ public class Projectile extends Entity{
         if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
           die();
           gameObject.die();
+=======
+
+        for (GameObject gameObject : this.handler.getNearObjects(this)) {
+            if (!gameObject.solid) {
+                break;
+            }
+            if ((gameObject instanceof Wall)) {
+
+                if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
+                    die();
+                }
+            }
+>>>>>>> 857dedc761f9a46f230dfaf99f80f64530e882c5
         }
-//        if ((getBoundsBottom().intersects(gameObject.getBounds()))){
-//            jumping = true;
-//            falling = false;
-//            gravity = 4.0;
-//        } else if(!falling&&!jumping){
-//            falling = true;
-//            gravity = 1.0;
-//        }
-      }
+
     }
-        
-    }
-    
+
 }

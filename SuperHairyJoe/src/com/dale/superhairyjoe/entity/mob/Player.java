@@ -7,6 +7,7 @@ import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.Entity.Direction;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.powerup.Mushroom;
+import com.dale.superhairyjoe.entity.weapons.BirdPoop;
 import com.dale.superhairyjoe.gfx.Sprite;
 import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Coin;
@@ -243,6 +244,32 @@ public class Player
           gameObject.die();
         }
       }
+      
+      if ((gameObject instanceof BirdPoop))
+      {
+      if (getBounds().intersects(gameObject.getBounds())) {
+          if (this.state == PlayerState.BIG)
+          {
+          Sound.play("power-down.wav"); 
+            this.state = PlayerState.SMALL;
+            this.width /= 2;
+            this.height /= 2;
+            this.x += this.width;
+            this.y += this.height;
+            //remove the poop after hit, else the level gets real nasty
+            
+            gameObject.die();
+          }
+          else if (this.state == PlayerState.SMALL)
+          {
+              //remove the player and player dies
+            die();
+            killed=true;
+            
+            
+          }
+        }
+      }
       else if ((gameObject instanceof Goomba)) {
         if (getBoundsBottom().intersects(((Goomba)gameObject).getBoundsTop())) {
           gameObject.die();
@@ -340,7 +367,11 @@ public class Player
   
   public void render(Graphics g)
   {
+<<<<<<< HEAD
     int offset = this.direction == Entity.Direction.LEFT ? 0 : 8;
+=======
+    int offset = this.direction == Entity.Direction.RIGHT ? 0 : 7;
+>>>>>>> 857dedc761f9a46f230dfaf99f80f64530e882c5
     g.drawImage(Game.player[(this.frame + offset)].getBufferedImage(), this.x, this.y, this.width, this.height, null);
   }
   
