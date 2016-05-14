@@ -75,6 +75,7 @@ public class KeyInput
         }
     }
     
+    
     for (GameObject gameObject : Game.handler.gameObjects) {
       if ((gameObject instanceof Player))
       {

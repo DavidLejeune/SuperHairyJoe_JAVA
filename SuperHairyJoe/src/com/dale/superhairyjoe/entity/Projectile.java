@@ -47,6 +47,7 @@ public class Projectile extends Entity{
         // this enemy just needs to turn when it hits a wall  
         if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
           die();
+          gameObject.die();
         }
 //        if ((getBoundsBottom().intersects(gameObject.getBounds()))){
 //            jumping = true;
