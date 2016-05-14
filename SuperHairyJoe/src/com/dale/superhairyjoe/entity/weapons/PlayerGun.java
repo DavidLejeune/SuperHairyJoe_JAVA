@@ -9,7 +9,9 @@ import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.Projectile;
+import com.dale.superhairyjoe.entity.mob.Goomba;
 import com.dale.superhairyjoe.entity.mob.Seagull;
+import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
 /**
@@ -47,9 +49,8 @@ extends Projectile{
             if (!gameObject.solid) {
               break;
             }
-            if ((gameObject instanceof Seagull))
+            if ((gameObject instanceof Seagull) || (gameObject instanceof Goomba) || (gameObject instanceof Wall))
             {
-              // this enemy just needs to turn when it hits a wall  
               if ((getBounds().intersects(gameObject.getBounds()))) 
               {
                 die();
