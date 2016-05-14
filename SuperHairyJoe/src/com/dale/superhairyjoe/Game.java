@@ -53,6 +53,7 @@ public class Game
   public static Sprite[] seagull;
   public static Sprite powerUp;
   public static Sprite usedPowerUp;
+  public static Sprite[] birdPoop;
   public static Camera cam;
   private BufferedImage image;
   private BufferedImage imageLevel1;
@@ -159,6 +160,7 @@ public class Game
     seagull = new Sprite[8];
     powerUp = new Sprite(sheet, 4, 1);
     usedPowerUp = new Sprite(sheet, 5, 1);
+    birdPoop = new Sprite [2];
     
     
     coin = new Sprite(sheet,6,1);
@@ -175,6 +177,11 @@ public class Game
     for (int i = 0; i < goomba.length; i++) {
       goomba[i] = new Sprite(sheet, i + 1, 15);
     }
+    
+    for (int i = 0; i < birdPoop.length; i++) {
+      birdPoop[i] = new Sprite(sheet, i + 1, 3);
+    }
+    
     for (int i = 0; i < seagull.length; i++) {
       seagull[i] = new Sprite(sheet, i + 1, 14);
     }

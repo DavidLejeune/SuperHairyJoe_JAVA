@@ -7,6 +7,7 @@ package com.dale.superhairyjoe.entity.weapons;
 
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
+import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.Projectile;
 import com.dale.superhairyjoe.tile.Wall;
@@ -37,7 +38,8 @@ extends Projectile
     }
     
     public void render(Graphics g) {
-        g.drawImage(Game.mushroom.getBufferedImage(), this.x, this.y, this.width, this.height, null);
+        int offset = this.direction == Entity.Direction.RIGHT ? 0 : 1;
+        g.drawImage(Game.birdPoop[(this.frame + offset)].getBufferedImage(), this.x, this.y, this.width, this.height, null);
     }
     
     public void tick() {
