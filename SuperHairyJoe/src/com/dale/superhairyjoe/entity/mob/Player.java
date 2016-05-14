@@ -57,6 +57,7 @@ public class Player
     if (this.y + this.height >= 10000) {
              die();
             killed=true;
+            Game.countSeagullShot=0;
                  
     }
     
@@ -343,6 +344,7 @@ public class Player
     if(killed)
     {
             Game.lives--;
+            Game.countSeagullShot=0;
             if(Game.lives==0)
             {
                 

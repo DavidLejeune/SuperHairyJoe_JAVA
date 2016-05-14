@@ -10,6 +10,7 @@ import com.dale.superhairyjoe.Handler;
 import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.Projectile;
+import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
@@ -52,6 +53,7 @@ extends Projectile
             }
             if ((gameObject instanceof Wall)) {
 
+                    //Sound.play("Birdpoopsplat.wav");
                 if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
                     die();
                 }

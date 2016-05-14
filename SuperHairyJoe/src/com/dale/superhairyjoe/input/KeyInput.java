@@ -108,7 +108,7 @@ public class KeyInput
             if(Game.coins > 0)
             {
               Game.coins --;
-              
+              Sound.play("pound.wav"); 
                 switch(player.direction){
                     case LEFT:
                         Game.handler.addGameObject(new PlayerGun(player.getX()-24,player.getY()+12,24,24,Game.handler,player.direction));

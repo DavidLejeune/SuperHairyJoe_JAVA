@@ -10,6 +10,7 @@ import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.Projectile;
 import com.dale.superhairyjoe.entity.weapons.BirdPoop;
 import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.sounds.Sound;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
@@ -47,9 +48,10 @@ public class Seagull
       }
     }
      if (time == random) {
+         Sound.play("Squish .wav");
           Game.handler.addGameObject(new BirdPoop(this.getX(),this.getY()+12,24,24,Game.handler,this.direction));
           time = 0;
-          random = (int)(Math.random()*180);
+          random = (int)(Math.random()*280);
       }
     time ++;
     

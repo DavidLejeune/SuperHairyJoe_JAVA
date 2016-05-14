@@ -103,7 +103,7 @@ public class Game
   public static boolean levelMoveDown=false;
   public static boolean levelMoveUp=false;
   public static boolean levelChoose=false;
-  
+  public static int countSeagullShot=0;
   
   
   public String introWav;
