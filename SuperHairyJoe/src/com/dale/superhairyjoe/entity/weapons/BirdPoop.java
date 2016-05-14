@@ -38,7 +38,7 @@ extends Projectile
     }
     
     public void render(Graphics g) {
-        int offset = this.direction == Entity.Direction.RIGHT ? 0 : 1;
+        int offset = this.direction == Entity.Direction.RIGHT ? 0:1;
         g.drawImage(Game.birdPoop[(this.frame + offset)].getBufferedImage(), this.x, this.y, this.width, this.height, null);
     }
     

@@ -6,9 +6,11 @@ import com.dale.superhairyjoe.entity.Enemy;
 import com.dale.superhairyjoe.entity.EnemyFlying;
 import com.dale.superhairyjoe.entity.Entity;
 import com.dale.superhairyjoe.entity.Entity.Direction;
+import com.dale.superhairyjoe.entity.GameObject;
 import com.dale.superhairyjoe.entity.Projectile;
 import com.dale.superhairyjoe.entity.weapons.BirdPoop;
 import com.dale.superhairyjoe.gfx.Sprite;
+import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
 public class Seagull
@@ -50,5 +52,26 @@ public class Seagull
           random = (int)(Math.random()*180);
       }
     time ++;
+    
+    
+//            for (GameObject gameObject : this.handler.getNearObjects(this))
+//        {
+//            if (!gameObject.solid) {
+//              break;
+//            }
+//            if ((gameObject instanceof Projectile))
+//            {
+//              // this enemy just needs to turn when it hits a wall  
+//              if ((getBounds().intersects(gameObject.getBounds()))) 
+//              {
+//                die();
+//                gameObject.die();
+//
+//
+//              }
+//
+//            }
+//        }
+    
   }
 }

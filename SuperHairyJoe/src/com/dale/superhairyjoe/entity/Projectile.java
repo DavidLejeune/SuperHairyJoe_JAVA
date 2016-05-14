@@ -7,6 +7,7 @@ package com.dale.superhairyjoe.entity;
 
 import com.dale.superhairyjoe.Game;
 import com.dale.superhairyjoe.Handler;
+import com.dale.superhairyjoe.entity.mob.Seagull;
 import com.dale.superhairyjoe.tile.Wall;
 import java.awt.Graphics;
 
@@ -38,14 +39,27 @@ public class Projectile extends Entity {
             if ((gameObject instanceof Wall))
             {
               // this enemy just needs to turn when it hits a wall  
-              if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) {
+              if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) 
+              {
                 die();
                 gameObject.die();
 
 
               }
 
-        }
+            }
+//            if ((gameObject instanceof Seagull))
+//            {
+//              // this enemy just needs to turn when it hits a wall  
+//              if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) 
+//              {
+//                die();
+//                gameObject.die();
+//
+//
+//              }
+//
+//            }
 
         }
     }
