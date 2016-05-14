@@ -102,15 +102,22 @@ public class KeyInput
         case 40: 
           player.setvelY(5);
             break;
-//        case KeyEvent.VK_SPACE:
-//            switch(player.direction){
-//                case LEFT:
-//                    Game.handler.addGameObject(new PlayerGun(player.getX()-24,player.getY()+12,24,24,Game.handler,player.direction));
-//                    break;
-//                case RIGHT:
-//                    Game.handler.addGameObject(new PlayerGun(player.getX(),player.getY()+12,24,24,Game.handler,player.direction));
-//                    break;
-//            }
+            
+        case KeyEvent.VK_SPACE:
+            
+            if(Game.coins > 0)
+            {
+              Game.coins --;
+              
+                switch(player.direction){
+                    case LEFT:
+                        Game.handler.addGameObject(new PlayerGun(player.getX()-24,player.getY()+12,24,24,Game.handler,player.direction));
+                        break;
+                    case RIGHT:
+                        Game.handler.addGameObject(new PlayerGun(player.getX(),player.getY()+12,24,24,Game.handler,player.direction));
+                        break;
+                }  
+            }
             
             
         }
@@ -189,6 +196,8 @@ public class KeyInput
           break;
         case 40: 
           player.setvelY(0);
+          case KeyEvent.VK_SPACE:
+              
         }
       }
     }
@@ -213,6 +222,7 @@ public class KeyInput
         break;
       case 40: 
         player.setvelY(5);
+          case KeyEvent.VK_SPACE:
       }
     }
   }
