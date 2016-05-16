@@ -191,7 +191,7 @@ public class Game
     
     try
     {
-      this.imageLevel1 = ImageIO.read(getClass().getResource("/level1.png"));
+      this.imageLevel1 = ImageIO.read(getClass().getResource("/level1 - Copy.png"));
     }
     catch (IOException ex)
     {
@@ -201,7 +201,7 @@ public class Game
     
     try
     {
-      this.imageLevel2 = ImageIO.read(getClass().getResource("/level2.png"));
+      this.imageLevel2 = ImageIO.read(getClass().getResource("/level2 - Copy.png"));
     }
     catch (IOException ex)
     {
@@ -210,7 +210,7 @@ public class Game
     
     try
     {
-      this.imageLevel3 = ImageIO.read(getClass().getResource("/level3.png"));
+      this.imageLevel3 = ImageIO.read(getClass().getResource("/level3 - Copy.png"));
     }
     catch (IOException ex)
     {

@@ -42,7 +42,6 @@ public class Projectile extends Entity {
               if ((getBoundsLeft().intersects(gameObject.getBounds())) || (getBoundsRight().intersects(gameObject.getBounds()))) 
               {
                 die();
-                gameObject.die();
 
 
               }
